@@ -6,7 +6,7 @@ title: Dynamic API Platform
 # Dynamic API Platform
 
 <p align="center">
-  <img src="screenshots/../banner.png" alt="Dynamic API Platform" width="100%" />
+  <img src="banner.png" alt="Dynamic API Platform" width="100%" />
 </p>
 
 **Create, manage, and test REST APIs without writing backend code.**
