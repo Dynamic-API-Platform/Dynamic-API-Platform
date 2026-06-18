@@ -5,6 +5,10 @@ title: Dynamic API Platform
 
 # Dynamic API Platform
 
+<p align="center">
+  <img src="screenshots/../banner.png" alt="Dynamic API Platform" width="100%" />
+</p>
+
 **Create, manage, and test REST APIs without writing backend code.**
 
 Dynamic API Platform is an open-source full-stack application that lets you define REST endpoints through a web UI, attach JSON schemas, enforce access control, and serve data instantly — powered by MongoDB and a runtime API engine.

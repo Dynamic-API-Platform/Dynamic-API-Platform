@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/banner.png" alt="Dynamic API Platform" width="100%" />
+</p>
+
 # Dynamic API Platform
 
 **Open-source platform for creating, managing, and testing REST APIs without writing backend code.**
@@ -44,18 +48,12 @@ docker compose up -d
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/dashboard.png" alt="Dashboard" width="800" />
+  <img src="docs/screenshots/dashboard.png" alt="Dashboard" width="720" />
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/endpoints.png" alt="Endpoints" width="800" />
+  <a href="docs/screenshots.md">View all screenshots</a> (login, endpoints, settings, system)
 </p>
-
-| Login | Settings | System |
-|-------|----------|--------|
-| ![Login](docs/screenshots/login.png) | ![Settings](docs/screenshots/settings.png) | ![System](docs/screenshots/system.png) |
-
-Полная галерея: [SCREENSHOTS.md](SCREENSHOTS.md) · [docs/screenshots.md](docs/screenshots.md)
 
 ## Features
 
