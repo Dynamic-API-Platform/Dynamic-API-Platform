@@ -1,5 +1,3 @@
-# Dynamic API Platform
-
 Welcome to the **Dynamic API Platform** wiki.
 
 Create, manage, and test REST APIs without writing backend code.

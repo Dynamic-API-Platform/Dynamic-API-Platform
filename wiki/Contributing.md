@@ -1,5 +1,3 @@
-# Contributing
-
 See [CONTRIBUTING.md](https://github.com/Developer-RU/Dynamic-API-Platform/blob/main/CONTRIBUTING.md)
 
 1. Fork the repo

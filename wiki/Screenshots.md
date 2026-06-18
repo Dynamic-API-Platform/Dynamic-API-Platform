@@ -1,5 +1,3 @@
-# Screenshots
-
 UI preview of Dynamic API Platform (localhost).
 
 ## Dashboard

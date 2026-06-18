@@ -5,6 +5,7 @@
 </head>
 <body>
   <div class="site">
+    {% include mobile-header.html %}
     {% include sidebar.html %}
     <div class="main">
       <main class="content">
@@ -21,5 +22,6 @@
       {% include footer.html %}
     </div>
   </div>
+  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
 </body>
 </html>

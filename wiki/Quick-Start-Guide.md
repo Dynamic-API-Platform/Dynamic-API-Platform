@@ -1,5 +1,3 @@
-# Quick Start Guide
-
 ## 1. Start platform
 
 ```bash

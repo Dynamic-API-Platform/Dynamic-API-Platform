@@ -1,5 +1,3 @@
-# API Reference
-
 Full reference: [API Reference](https://developer-ru.github.io/Dynamic-API-Platform/api-reference/)
 
 ## Base URL

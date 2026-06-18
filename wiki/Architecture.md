@@ -1,5 +1,3 @@
-# Architecture
-
 See full documentation: [Architecture](https://developer-ru.github.io/Dynamic-API-Platform/architecture/)
 
 ## Stack
