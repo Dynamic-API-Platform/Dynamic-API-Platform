@@ -25,7 +25,7 @@
 
 ```bash
 # Clone wiki repo (after creating first wiki page on GitHub)
-git clone https://github.com/Developer-RU/Dynamic-API-Platform.wiki.git
+git clone https://github.com/Developer-RU/dynamic-api-platform.wiki.git
 cp wiki/*.md Dynamic-API-Platform.wiki/
 cd Dynamic-API-Platform.wiki
 git add . && git commit -m "docs: import wiki pages" && git push
