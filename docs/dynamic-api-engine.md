@@ -1,5 +1,8 @@
 ---
 layout: default
+redirect_from:
+  - /dynamic-api-engine.html
+
 title: Dynamic API Engine
 ---
 

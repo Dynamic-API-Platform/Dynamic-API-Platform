@@ -1,5 +1,8 @@
 ---
 layout: default
+redirect_from:
+  - /getting-started.html
+
 title: Getting Started
 ---
 

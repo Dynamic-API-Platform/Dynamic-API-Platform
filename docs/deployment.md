@@ -1,5 +1,8 @@
 ---
 layout: default
+redirect_from:
+  - /deployment.html
+
 title: Deployment
 ---
 

@@ -1,5 +1,8 @@
 ---
 layout: default
+redirect_from:
+  - /rbac.html
+
 title: Role-Based Access Control
 description: Permissions, groups, and access types
 ---

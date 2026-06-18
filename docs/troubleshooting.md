@@ -1,5 +1,8 @@
 ---
 layout: default
+redirect_from:
+  - /troubleshooting.html
+
 title: Troubleshooting
 ---
 

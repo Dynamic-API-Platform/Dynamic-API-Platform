@@ -1,5 +1,8 @@
 ---
 layout: default
+redirect_from:
+  - /screenshots.html
+
 title: Screenshots
 description: UI screenshots from localhost deployment
 ---

@@ -1,5 +1,8 @@
 ---
 layout: default
+redirect_from:
+  - /development.html
+
 title: Development
 ---
 

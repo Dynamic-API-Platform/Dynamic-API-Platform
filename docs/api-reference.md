@@ -1,5 +1,8 @@
 ---
 layout: default
+redirect_from:
+  - /api-reference.html
+
 title: API Reference
 ---
 
