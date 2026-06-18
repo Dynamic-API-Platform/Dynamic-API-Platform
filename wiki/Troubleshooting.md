@@ -1,6 +1,6 @@
 # Troubleshooting
 
-Full guide: [Troubleshooting](https://developer-ru.github.io/dynamic-api-platform/troubleshooting.html)
+Full guide: [Troubleshooting](https://developer-ru.github.io/Dynamic-API-Platform/troubleshooting.html)
 
 ## Port in use
 

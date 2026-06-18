@@ -13,8 +13,8 @@ title: Development
 ## Setup
 
 ```bash
-git clone https://github.com/Developer-RU/dynamic-api-platform.git
-cd dynamic-api-platform
+git clone https://github.com/Developer-RU/Dynamic-API-Platform.git
+cd Dynamic-API-Platform
 
 # Start MongoDB only
 docker run -d --name dap-mongo -p 27017:27017 mongo:7
@@ -110,4 +110,4 @@ See [Troubleshooting](troubleshooting.md).
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/Developer-RU/dynamic-api-platform/blob/main/CONTRIBUTING.md) on GitHub.
+See [CONTRIBUTING.md](https://github.com/Developer-RU/Dynamic-API-Platform/blob/main/CONTRIBUTING.md) on GitHub.

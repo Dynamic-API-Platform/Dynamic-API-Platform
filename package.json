@@ -7,12 +7,12 @@
   "author": "Developer-RU",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Developer-RU/dynamic-api-platform.git"
+    "url": "https://github.com/Developer-RU/Dynamic-API-Platform.git"
   },
   "bugs": {
-    "url": "https://github.com/Developer-RU/dynamic-api-platform/issues"
+    "url": "https://github.com/Developer-RU/Dynamic-API-Platform/issues"
   },
-  "homepage": "https://developer-ru.github.io/dynamic-api-platform/",
+  "homepage": "https://developer-ru.github.io/Dynamic-API-Platform/",
   "keywords": [
     "dynamic-api",
     "rest-api",

@@ -1,7 +1,7 @@
 # Dynamic API Platform Wiki
 
 > This folder mirrors the GitHub Wiki content.  
-> Full documentation is also available on [GitHub Pages](https://developer-ru.github.io/dynamic-api-platform/).
+> Full documentation is also available on [GitHub Pages](https://developer-ru.github.io/Dynamic-API-Platform/).
 
 ## Pages
 
@@ -25,9 +25,9 @@
 
 ```bash
 # Clone wiki repo (after creating first wiki page on GitHub)
-git clone https://github.com/Developer-RU/dynamic-api-platform.wiki.git
-cp wiki/*.md dynamic-api-platform.wiki/
-cd dynamic-api-platform.wiki
+git clone https://github.com/Developer-RU/Dynamic-API-Platform.wiki.git
+cp wiki/*.md Dynamic-API-Platform.wiki/
+cd Dynamic-API-Platform.wiki
 git add . && git commit -m "docs: import wiki pages" && git push
 ```
 

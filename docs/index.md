@@ -12,7 +12,7 @@ Dynamic API Platform is an open-source full-stack application that lets you defi
   <a href="{{ '/getting-started/' | relative_url }}">Quick Start</a> ·
   <a href="{{ '/architecture/' | relative_url }}">Architecture</a> ·
   <a href="{{ '/api-reference/' | relative_url }}">API Reference</a> ·
-  <a href="https://github.com/Developer-RU/dynamic-api-platform">GitHub</a>
+  <a href="https://github.com/Developer-RU/Dynamic-API-Platform">GitHub</a>
 </p>
 
 ## Features
@@ -28,8 +28,8 @@ Dynamic API Platform is an open-source full-stack application that lets you defi
 ## Quick Start
 
 ```bash
-git clone https://github.com/Developer-RU/dynamic-api-platform.git
-cd dynamic-api-platform
+git clone https://github.com/Developer-RU/Dynamic-API-Platform.git
+cd Dynamic-API-Platform
 docker compose up -d
 ```
 
@@ -71,4 +71,4 @@ docker compose up -d
 
 ## License
 
-[MIT License](https://github.com/Developer-RU/dynamic-api-platform/blob/main/LICENSE)
+[MIT License](https://github.com/Developer-RU/Dynamic-API-Platform/blob/main/LICENSE)

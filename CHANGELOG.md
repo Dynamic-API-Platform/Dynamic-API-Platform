@@ -91,4 +91,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Multi-tenant workspace support
 - Endpoint versioning
 
-[1.0.0]: https://github.com/Developer-RU/dynamic-api-platform/releases/tag/v1.0.0
+[1.0.0]: https://github.com/Developer-RU/Dynamic-API-Platform/releases/tag/v1.0.0

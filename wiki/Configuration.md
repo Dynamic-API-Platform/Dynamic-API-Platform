@@ -1,6 +1,6 @@
 # Configuration
 
-Full guide: [Configuration](https://developer-ru.github.io/dynamic-api-platform/configuration.html)
+Full guide: [Configuration](https://developer-ru.github.io/Dynamic-API-Platform/configuration.html)
 
 Copy `.env.example` to `.env`.
 

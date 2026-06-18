@@ -1,6 +1,6 @@
 # Contributing
 
-See [CONTRIBUTING.md](https://github.com/Developer-RU/dynamic-api-platform/blob/main/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/Developer-RU/Dynamic-API-Platform/blob/main/CONTRIBUTING.md)
 
 1. Fork the repo
 2. Create feature branch

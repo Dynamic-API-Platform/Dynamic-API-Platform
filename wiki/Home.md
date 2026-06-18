@@ -16,11 +16,11 @@ Create, manage, and test REST APIs without writing backend code.
 
 ## Online documentation
 
-Full docs with search: **https://developer-ru.github.io/dynamic-api-platform/**
+Full docs with search: **https://developer-ru.github.io/Dynamic-API-Platform/**
 
 ## Repository
 
-https://github.com/Developer-RU/dynamic-api-platform
+https://github.com/Developer-RU/Dynamic-API-Platform
 
 ## Default credentials (development)
 

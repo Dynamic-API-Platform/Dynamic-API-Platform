@@ -9,8 +9,8 @@ title: Deployment
 
 ```bash
 # 1. Clone and configure
-git clone https://github.com/Developer-RU/dynamic-api-platform.git
-cd dynamic-api-platform
+git clone https://github.com/Developer-RU/Dynamic-API-Platform.git
+cd Dynamic-API-Platform
 cp .env.example .env
 
 # 2. Edit .env — CRITICAL for production:

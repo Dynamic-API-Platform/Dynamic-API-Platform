@@ -12,8 +12,8 @@ title: Getting Started
 
 ```bash
 # Clone repository
-git clone https://github.com/Developer-RU/dynamic-api-platform.git
-cd dynamic-api-platform
+git clone https://github.com/Developer-RU/Dynamic-API-Platform.git
+cd Dynamic-API-Platform
 
 # Optional: copy and edit environment variables
 cp .env.example .env

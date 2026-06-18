@@ -27,8 +27,8 @@ Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 ### Quick setup
 
 ```bash
-git clone https://github.com/Developer-RU/dynamic-api-platform.git
-cd dynamic-api-platform
+git clone https://github.com/Developer-RU/Dynamic-API-Platform.git
+cd Dynamic-API-Platform
 cp .env.example .env
 docker compose up -d
 ```
@@ -136,4 +136,4 @@ Use the [Bug Report issue template](.github/ISSUE_TEMPLATE/bug_report.yml). Incl
 
 ## Questions?
 
-Open a [Discussion](https://github.com/Developer-RU/dynamic-api-platform/discussions) or an issue with the `question` label.
+Open a [Discussion](https://github.com/Developer-RU/Dynamic-API-Platform/discussions) or an issue with the `question` label.

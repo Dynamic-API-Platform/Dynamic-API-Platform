@@ -1,6 +1,6 @@
 # Architecture
 
-See full documentation: [Architecture](https://developer-ru.github.io/dynamic-api-platform/architecture.html)
+See full documentation: [Architecture](https://developer-ru.github.io/Dynamic-API-Platform/architecture.html)
 
 ## Stack
 

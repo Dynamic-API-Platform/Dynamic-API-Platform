@@ -1,6 +1,6 @@
 # RBAC and Permissions
 
-Full guide: [RBAC](https://developer-ru.github.io/dynamic-api-platform/rbac.html)
+Full guide: [RBAC](https://developer-ru.github.io/Dynamic-API-Platform/rbac.html)
 
 ## Permissions
 
