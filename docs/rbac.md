@@ -59,6 +59,8 @@ Separate from RBAC — controls who can call a **dynamic** endpoint at runtime:
 | `authenticated` | Any logged-in user |
 | `group` | Users in endpoint's `allowedGroupIds` |
 
+**Note:** System endpoints shown in the Endpoints list (`/api/users`, `/api/groups`, `/api/profile`) are **documentation entries** for the built-in management API. They use RBAC on the real Express routes, not dynamic `group` access. The built-in **Test** tab calls those management routes directly.
+
 Management API endpoints always use RBAC permissions regardless of endpoint access type.
 
 ## Permission matrix (management API)

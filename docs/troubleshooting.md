@@ -54,6 +54,17 @@ Update `CORS_ORIGIN` accordingly.
 - Check JWT secrets haven't changed between restarts (invalidates tokens)
 - Clear localStorage and log in again
 - Verify system clock is correct
+- After token refresh, permissions must be present in the JWT — update to the latest backend image if APIs return 403 right after idle time
+
+### Dashboard shows "Failed to load dashboard" instead of login
+
+This was a known issue when the access token expired. Current builds redirect to `/login` automatically. Rebuild Docker images if you run an older container:
+
+```bash
+docker compose build --no-cache && docker compose up -d
+```
+
+Clear browser cache / hard refresh after redeploy.
 
 ### Login returns 401
 
@@ -83,6 +94,14 @@ Request body doesn't match schema. Check required fields and types in endpoint e
 ### GET returns empty array
 
 No data created yet. POST a record first.
+
+### Built-in test returns "Forbidden: insufficient group permissions" on `/api/users`
+
+System endpoints (`/api/users`, `/api/groups`, `/api/profile`) are **management APIs** with RBAC — not dynamic CRUD routes. Older builds tested them through the dynamic engine incorrectly. Update to the latest backend; the tester now calls the real routes. Ensure your user has `manage_users` or `view` permission.
+
+### Reference field validation fails on POST
+
+The value must be a valid **record ID** from the linked endpoint's collection. Create the target record first (e.g. a category), then pass its `id` in the reference field (e.g. `categoryId`).
 
 ---
 

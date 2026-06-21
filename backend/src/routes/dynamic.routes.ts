@@ -10,6 +10,7 @@ const SYSTEM_PATHS = [
   '/api/profile',
   '/api/endpoints',
   '/api/dashboard',
+  '/api/database',
   '/api/health',
   '/api/csrf-token',
 ];

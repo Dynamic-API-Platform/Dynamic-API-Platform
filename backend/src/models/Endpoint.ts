@@ -25,7 +25,7 @@ const SchemaFieldSchema = new Schema(
     name: { type: String, required: true },
     type: {
       type: String,
-      enum: ['string', 'number', 'boolean', 'object', 'array', 'datetime', 'json'],
+      enum: ['string', 'number', 'boolean', 'object', 'array', 'datetime', 'json', 'reference'],
       required: true,
     },
     required: { type: Boolean, default: false },
@@ -33,6 +33,7 @@ const SchemaFieldSchema = new Schema(
     defaultValue: { type: Schema.Types.Mixed },
     order: { type: Number, default: 0 },
     children: [{ type: Schema.Types.Mixed }],
+    refEndpointId: { type: String },
   },
   { _id: false }
 );

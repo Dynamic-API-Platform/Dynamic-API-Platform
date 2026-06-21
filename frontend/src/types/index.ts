@@ -34,6 +34,7 @@ export interface SchemaField {
   defaultValue?: unknown;
   order: number;
   children?: SchemaField[];
+  refEndpointId?: string;
 }
 
 export interface Endpoint {
@@ -166,4 +167,18 @@ export interface ApiResponse<T> {
   data?: T;
   message?: string;
   error?: string;
+}
+
+export interface DbCollectionInfo {
+  name: string;
+  label: string;
+  count: number;
+}
+
+export interface DbDocumentPage {
+  data: Record<string, unknown>[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
 }

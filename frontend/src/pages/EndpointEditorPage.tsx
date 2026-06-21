@@ -6,13 +6,14 @@ import { Endpoint, EndpointGroup, SchemaField, TestResult } from '../types';
 import { PageHeader, MethodBadge, LoadingSpinner, SearchInput } from '../components/UI';
 import { matchesSearch } from '../utils/search';
 
-const FIELD_TYPES = ['string', 'number', 'boolean', 'object', 'array', 'datetime', 'json'];
+const FIELD_TYPES = ['string', 'number', 'boolean', 'object', 'array', 'datetime', 'json', 'reference'];
 
 export default function EndpointEditorPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [endpoint, setEndpoint] = useState<Endpoint | null>(null);
   const [endpointGroups, setEndpointGroups] = useState<EndpointGroup[]>([]);
+  const [refEndpoints, setRefEndpoints] = useState<Endpoint[]>([]);
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState<'general' | 'schema' | 'test' | 'docs'>('general');
   const [saving, setSaving] = useState(false);
@@ -23,17 +24,26 @@ export default function EndpointEditorPage() {
   const [examples, setExamples] = useState<{ request: Record<string, unknown>; response: Record<string, unknown> } | null>(null);
   const [docs, setDocs] = useState<Record<string, unknown> | null>(null);
   const [fieldSearch, setFieldSearch] = useState('');
+  const [testPopulate, setTestPopulate] = useState('');
+
+  const refEndpointLabel = (refEndpointId?: string) => {
+    if (!refEndpointId) return '—';
+    const target = refEndpoints.find((ep) => ep._id === refEndpointId);
+    return target ? `${target.method} ${target.path} — ${target.name}` : refEndpointId;
+  };
 
   useEffect(() => {
     if (!id) return;
     Promise.all([
       api.getEndpoint(id),
       api.getEndpointGroups(),
+      api.getEndpoints(1, 200),
       api.getEndpointExamples(id).catch(() => null),
       api.getEndpointDocs(id).catch(() => null),
-    ]).then(([ep, groups, ex, doc]) => {
+    ]).then(([ep, groups, endpointList, ex, doc]) => {
       setEndpoint(ep);
       setEndpointGroups(groups);
+      setRefEndpoints(endpointList.data.filter((item) => !item.isSystem && item._id !== id));
       if (ex) {
         setExamples(ex);
         setTestBody(JSON.stringify(ex.request, null, 2));
@@ -76,7 +86,11 @@ export default function EndpointEditorPage() {
   const updateField = (index: number, updates: Partial<SchemaField>) => {
     if (!endpoint) return;
     const fields = [...endpoint.fields];
-    fields[index] = { ...fields[index], ...updates };
+    const next = { ...fields[index], ...updates };
+    if (updates.type && updates.type !== 'reference') {
+      delete next.refEndpointId;
+    }
+    fields[index] = next;
     setEndpoint({ ...endpoint, fields });
   };
 
@@ -92,7 +106,12 @@ export default function EndpointEditorPage() {
     try {
       let body: unknown;
       try { body = JSON.parse(testBody); } catch { body = testBody; }
-      const result = await api.testEndpoint(id, { body });
+      const result = await api.testEndpoint(id, {
+        body,
+        query: endpoint?.method === 'GET' && testPopulate.trim()
+          ? { populate: testPopulate.trim() }
+          : undefined,
+      });
       setTestResult(result);
     } catch (err) {
       alert(err instanceof Error ? err.message : 'Test failed');
@@ -215,6 +234,13 @@ export default function EndpointEditorPage() {
 
       {tab === 'schema' && (
         <div className="space-y-4">
+          <div className="card p-4 border border-purple-500/30 bg-purple-500/5">
+            <p className="text-sm text-dark-muted">
+              <span className="font-medium text-dark-text">Foreign keys:</span> add a field with type{' '}
+              <span className="badge-purple">reference</span>, then choose the target endpoint under the field row.
+              Values are record IDs from that endpoint; use <code className="text-accent">?populate=true</code> on GET to embed linked data.
+            </p>
+          </div>
           <div className="card">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
               <h3 className="font-semibold text-sm">Schema Fields</h3>
@@ -240,22 +266,44 @@ export default function EndpointEditorPage() {
             ) : (
               <div className="space-y-3">
                 {visibleFields.map(({ field, index }) => (
-                  <div key={index} className="flex items-start gap-3 p-3 bg-dark-bg rounded-md border border-dark-border">
-                    <GripVertical className="w-4 h-4 text-dark-muted mt-2.5 cursor-grab" />
-                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-4 gap-2">
-                      <input className="input" value={field.name} onChange={(e) => updateField(index, { name: e.target.value })} placeholder="Field name" />
-                      <select className="select" value={field.type} onChange={(e) => updateField(index, { type: e.target.value })}>
-                        {FIELD_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
-                      </select>
-                      <input className="input" value={field.description || ''} onChange={(e) => updateField(index, { description: e.target.value })} placeholder="Description" />
-                      <label className="flex items-center gap-2 text-sm">
-                        <input type="checkbox" checked={field.required} onChange={(e) => updateField(index, { required: e.target.checked })} />
-                        Required
-                      </label>
+                  <div key={index} className="p-3 bg-dark-bg rounded-md border border-dark-border space-y-2">
+                    <div className="flex items-start gap-3">
+                      <GripVertical className="w-4 h-4 text-dark-muted mt-2.5 cursor-grab" />
+                      <div className="flex-1 grid grid-cols-1 sm:grid-cols-4 gap-2">
+                        <input className="input" value={field.name} onChange={(e) => updateField(index, { name: e.target.value })} placeholder="Field name" />
+                        <select className="select" value={field.type} onChange={(e) => updateField(index, { type: e.target.value })}>
+                          {FIELD_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+                        </select>
+                        <input className="input" value={field.description || ''} onChange={(e) => updateField(index, { description: e.target.value })} placeholder="Description" />
+                        <label className="flex items-center gap-2 text-sm">
+                          <input type="checkbox" checked={field.required} onChange={(e) => updateField(index, { required: e.target.checked })} />
+                          Required
+                        </label>
+                      </div>
+                      <button className="btn-danger py-1 px-2 mt-1" onClick={() => removeField(index)}>
+                        <Trash2 className="w-3 h-3" />
+                      </button>
                     </div>
-                    <button className="btn-danger py-1 px-2 mt-1" onClick={() => removeField(index)}>
-                      <Trash2 className="w-3 h-3" />
-                    </button>
+                    {field.type === 'reference' && (
+                      <div className="ml-7">
+                        <label className="block text-xs text-dark-muted mb-1">Linked endpoint (foreign key target)</label>
+                        <select
+                          className="select max-w-xl"
+                          value={field.refEndpointId || ''}
+                          onChange={(e) => updateField(index, { refEndpointId: e.target.value || undefined })}
+                        >
+                          <option value="">— Select endpoint —</option>
+                          {refEndpoints.map((ep) => (
+                            <option key={ep._id} value={ep._id}>
+                              {ep.method} {ep.path} — {ep.name}
+                            </option>
+                          ))}
+                        </select>
+                        <p className="text-xs text-dark-muted mt-1">
+                          Stores a record ID from the selected endpoint. Use <code className="text-accent">?populate=true</code> on GET to embed linked data.
+                        </p>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -288,6 +336,19 @@ export default function EndpointEditorPage() {
               <MethodBadge method={endpoint.method} />
               <span className="font-mono text-sm text-dark-muted">{endpoint.path}</span>
             </div>
+
+            {endpoint.method === 'GET' && (
+              <div>
+                <label className="block text-sm font-medium mb-1">Populate references (optional)</label>
+                <input
+                  className="input font-mono text-sm"
+                  value={testPopulate}
+                  onChange={(e) => setTestPopulate(e.target.value)}
+                  placeholder="true or categoryId,authorId"
+                />
+                <p className="text-xs text-dark-muted mt-1">Query param <code>?populate=</code> — use <strong>true</strong> for all reference fields.</p>
+              </div>
+            )}
 
             {endpoint.method !== 'GET' && endpoint.method !== 'DELETE' && (
               <div>
@@ -346,12 +407,15 @@ export default function EndpointEditorPage() {
             {Array.isArray(docs.parameters) && (docs.parameters as SchemaField[]).length > 0 ? (
               <div className="table-container">
                 <table className="table">
-                  <thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                  <thead><tr><th>Name</th><th>Type</th><th>Linked endpoint</th><th>Required</th><th>Description</th></tr></thead>
                   <tbody>
                     {(docs.parameters as SchemaField[]).map((p, i) => (
                       <tr key={i}>
                         <td className="font-mono">{p.name}</td>
                         <td><span className="badge-purple">{p.type}</span></td>
+                        <td className="text-xs text-dark-muted font-mono">
+                          {p.type === 'reference' ? refEndpointLabel(p.refEndpointId) : '—'}
+                        </td>
                         <td>{p.required ? 'Yes' : 'No'}</td>
                         <td className="text-dark-muted">{p.description || '-'}</td>
                       </tr>

@@ -15,10 +15,24 @@ Routes → Services → Repositories → MongoDB
 
 Dynamic requests: `dynamic.routes` → DynamicEngine → EndpointData
 
+System management routes (`/api/users`, `/api/groups`, …) are registered **before** the dynamic catch-all.
+
 ## Key collections
 
 - `users`, `groups` — RBAC
 - `endpoints`, `endpointgroups` — API definitions
-- `endpointdatas` — runtime data
+- `endpointdatas` — runtime data (cross-linked via `reference` schema fields)
 - `logs` — audit trail
 - `systemsettings` — platform config
+
+## Data relationships
+
+```
+EndpointData ──reference field──▶ EndpointData (validated foreign keys)
+Endpoint ──one-to-many──▶ EndpointData (endpointId + resourcePath)
+```
+
+## Runtime behavior
+
+- Endpoint definitions read from MongoDB on each request — **no restart** when routes change
+- JWT refresh re-issues access tokens with full permission set from user groups

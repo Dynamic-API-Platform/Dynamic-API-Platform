@@ -131,6 +131,7 @@ App.tsx
 User ──many-to-many──▶ Group
 Endpoint ──optional──▶ EndpointGroup
 Endpoint ──one-to-many──▶ EndpointData (via endpointId + resourcePath)
+EndpointData ──reference fields──▶ EndpointData (cross-endpoint links via `reference` schema fields)
 Log ──optional──▶ User, Endpoint
 ```
 

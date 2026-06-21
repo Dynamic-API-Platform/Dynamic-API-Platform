@@ -14,7 +14,8 @@ export type FieldType =
   | 'object'
   | 'array'
   | 'datetime'
-  | 'json';
+  | 'json'
+  | 'reference';
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
@@ -43,6 +44,7 @@ export interface SchemaField {
   defaultValue?: unknown;
   order: number;
   children?: SchemaField[];
+  refEndpointId?: string;
 }
 
 export interface EndpointHandler {

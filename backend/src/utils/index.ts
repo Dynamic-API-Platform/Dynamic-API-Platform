@@ -19,6 +19,12 @@ export function verifyToken<T>(token: string, secret: string): T {
   return jwt.verify(token, secret) as T;
 }
 
+export function getCollectionPath(path: string): string {
+  const normalized = normalizePath(path);
+  const withoutParams = normalized.replace(/\/:[^/]+/g, '');
+  return withoutParams || normalized;
+}
+
 export function generateExampleValue(type: FieldType): unknown {
   switch (type) {
     case 'string':
@@ -35,6 +41,8 @@ export function generateExampleValue(type: FieldType): unknown {
       return ['item1', 'item2'];
     case 'object':
       return { nested: 'value' };
+    case 'reference':
+      return '507f1f77bcf86cd799439011';
     default:
       return null;
   }
@@ -105,6 +113,57 @@ export function validateDataAgainstSchema(
         break;
       case 'json':
         break;
+      case 'reference':
+        if (typeof value !== 'string') {
+          errors.push(`Field "${field.name}" must be a reference ID string`);
+        } else if (!/^[a-f\d]{24}$/i.test(value)) {
+          errors.push(`Field "${field.name}" must be a valid record ID`);
+        } else if (!field.refEndpointId) {
+          errors.push(`Field "${field.name}" must specify a target endpoint`);
+        }
+        break;
+    }
+  }
+
+  return { valid: errors.length === 0, errors };
+}
+
+const OBJECT_ID_PATTERN = /^[a-f\d]{24}$/i;
+
+export async function validateReferences(
+  data: Record<string, unknown>,
+  schema: SchemaField[],
+  resolveEndpoint: (id: string) => Promise<{ path: string } | null>,
+  resolveRecord: (id: string) => Promise<{ resourcePath: string } | null>
+): Promise<{ valid: boolean; errors: string[] }> {
+  const errors: string[] = [];
+
+  for (const field of schema) {
+    if (field.type !== 'reference') continue;
+
+    const value = data[field.name];
+    if (value === undefined || value === null || value === '') continue;
+
+    if (typeof value !== 'string' || !OBJECT_ID_PATTERN.test(value)) {
+      errors.push(`Field "${field.name}" must be a valid record ID`);
+      continue;
+    }
+
+    if (!field.refEndpointId) {
+      errors.push(`Field "${field.name}" must specify a target endpoint`);
+      continue;
+    }
+
+    const refEndpoint = await resolveEndpoint(field.refEndpointId);
+    if (!refEndpoint) {
+      errors.push(`Field "${field.name}" references unknown endpoint`);
+      continue;
+    }
+
+    const record = await resolveRecord(value);
+    const collectionPath = getCollectionPath(refEndpoint.path);
+    if (!record || record.resourcePath !== collectionPath) {
+      errors.push(`Field "${field.name}" references non-existent record`);
     }
   }
 

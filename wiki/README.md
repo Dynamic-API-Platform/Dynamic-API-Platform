@@ -1,7 +1,8 @@
 # Dynamic API Platform Wiki
 
 > This folder mirrors the GitHub Wiki content.  
-> Full documentation is also available on [GitHub Pages](https://developer-ru.github.io/Dynamic-API-Platform/).
+> Full documentation is also available on [GitHub Pages](https://developer-ru.github.io/Dynamic-API-Platform/).  
+> Recent changes: [CHANGELOG.md](https://github.com/Developer-RU/Dynamic-API-Platform/blob/main/CHANGELOG.md)
 
 ## Pages
 

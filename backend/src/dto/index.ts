@@ -66,6 +66,7 @@ export interface SchemaFieldDto {
   defaultValue?: unknown;
   order?: number;
   children?: SchemaFieldDto[];
+  refEndpointId?: string;
 }
 
 export interface CreateEndpointDto {

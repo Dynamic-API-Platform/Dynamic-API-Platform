@@ -43,6 +43,34 @@ Parameters extracted and available in handlers.
 | `object` | Plain object | `{ "key": "val" }` |
 | `datetime` | Valid ISO date | `"2026-01-15T10:00:00Z"` |
 | `json` | Any JSON value | accepted as-is |
+| `reference` | MongoDB record ID linked to another endpoint | `"507f1f77bcf86cd799439011"` |
+
+### References (foreign keys between endpoints)
+
+Use the **`reference`** field type to link records across endpoints — similar to a foreign key in SQL.
+
+1. Create the **target** endpoint first (e.g. `POST/GET /api/categories`)
+2. On the **source** endpoint schema (e.g. `/api/products`), add a field with type `reference`
+3. Select the target endpoint in **Linked endpoint (foreign key target)**
+4. When creating/updating a product, pass the category record `id` — the engine validates that the record exists
+
+**Example product schema:**
+
+| Field | Type | Target endpoint |
+|-------|------|-----------------|
+| `name` | string | — |
+| `price` | number | — |
+| `categoryId` | reference | `GET /api/categories` |
+
+**Populate linked data on read:**
+
+```
+GET /api/products?populate=true
+GET /api/products?populate=categoryId
+GET /api/products/507f...?populate=categoryId
+```
+
+With `populate`, reference fields are expanded to `{ id, ...fields }` instead of a bare ID string.
 
 ### Nested objects
 
@@ -131,7 +159,7 @@ The **Test** tab in endpoint editor calls `POST /api/endpoints/:id/test` which:
 ## Limitations (v1.0)
 
 - No custom JavaScript hooks per endpoint
-- No relational joins between endpoint data collections
+- References are one-way (no automatic cascade delete)
 - No built-in file upload field type
 - Schema changes do not migrate existing data
 - Rate limiting is global, not per-endpoint

@@ -47,6 +47,14 @@ GET, POST, PUT, PATCH, DELETE.
 
 Not in v1.0. The engine handles CRUD with schema validation only. For custom logic, extend the backend service layer.
 
+### Can I link records between endpoints (foreign keys)?
+
+Yes. Add a schema field with type **`reference`**, then select the **target endpoint** in the editor. The value stored is a record ID from that endpoint's collection. On create/update the platform validates the link. On GET use `?populate=true` or `?populate=fieldName` to embed linked data.
+
+Example: `categoryId` (reference → `GET /api/categories`) on `/api/products`.
+
+See [Dynamic API Engine — References]({{ '/dynamic-api-engine/' | relative_url }}#references-foreign-keys-between-endpoints).
+
 ---
 
 ## Authentication
@@ -63,6 +71,10 @@ Yes. Settings → Authentication → Disable registration.
 ### What happens after too many failed logins?
 
 IP is temporarily locked out (configurable attempts and duration in Settings).
+
+### Why was I stuck on "Failed to load dashboard" after idle time?
+
+Fixed in recent builds: expired sessions now redirect to `/login`. If you still see the error, hard-refresh the page (`Ctrl+F5`) or clear `localStorage` tokens and log in again.
 
 ---
 

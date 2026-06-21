@@ -19,7 +19,21 @@
 
 Dynamic API Platform lets you define REST endpoints through a web admin panel, attach JSON schemas, configure access control, and serve data instantly — powered by MongoDB and a runtime API engine.
 
+**New endpoints go live the moment you save them** — no server restart, no process reload, and no redeploy. Route definitions are stored in MongoDB and resolved on every request, so the API surface can grow and change while the server keeps running.
+
 Perfect for prototyping, internal tools, lightweight BaaS, and teams who need APIs fast without boilerplate.
+
+### What makes it different
+
+Unlike traditional headless CMS platforms (e.g. **Strapi**, **Directus**) or hand-written Express/Fastify apps, where new APIs often mean code changes, builds, or server restarts, Dynamic API Platform treats endpoints as **runtime configuration**:
+
+| | Dynamic API Platform | Typical CMS / custom backend |
+|--|----------------------|------------------------------|
+| Add a REST endpoint | Save in admin UI → immediately callable | Edit code or content model → rebuild and/or restart |
+| Change path or schema | Update in UI, takes effect instantly | Redeploy or restart workers |
+| Server downtime | None for API changes | Often required |
+
+This zero-downtime, database-driven routing is the platform’s core differentiator — a true dynamic API engine, not a static route table compiled at startup.
 
 ```
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
@@ -58,8 +72,9 @@ docker compose up -d
 ## Features
 
 ### Dynamic API Engine
-- Create REST endpoints (GET/POST/PUT/PATCH/DELETE) via UI — no code deploy needed
-- Schema builder: `string`, `number`, `boolean`, `object`, `array`, `datetime`, `json`
+- Create REST endpoints (GET/POST/PUT/PATCH/DELETE) via UI — **live immediately, no server restart or redeploy**
+- **`reference` fields** — link records between endpoints (foreign keys) with validation and optional `?populate=`
+- Schema builder: `string`, `number`, `boolean`, `object`, `array`, `datetime`, `json`, `reference`
 - Path parameters (`/api/items/:id`), validation, default values
 - Built-in API tester and auto-generated documentation
 
@@ -175,6 +190,14 @@ Report vulnerabilities privately — see [SECURITY.md](SECURITY.md).
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for version history.
+
+### Recent updates (Unreleased)
+
+- **`reference` schema fields** — foreign keys between endpoints, `?populate=` on GET
+- **Zero-downtime routing** — new endpoints without server restart
+- **Auth fixes** — session redirect to login, JWT refresh permissions
+- **System endpoint tester** — correct RBAC for `/api/users`, `/api/groups`, `/api/profile`
+- **License** — Apache 2.0
 
 ## License
 

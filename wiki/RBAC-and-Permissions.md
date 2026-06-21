@@ -14,8 +14,12 @@ Full guide: [RBAC](https://developer-ru.github.io/Dynamic-API-Platform/rbac/)
 | Manager | API + logs |
 | User | View only |
 
-## Endpoint access types
+## Endpoint access types (dynamic CRUD)
 
 - `public` — no auth
 - `authenticated` — any logged-in user
-- `group` — specific groups only
+- `group` — user must belong to `allowedGroupIds`
+
+## System endpoints in the UI
+
+Entries like **List Users** (`GET /api/users`) document the **management API**. They use RBAC on real Express routes (`manage_users` / `view`), not dynamic engine group checks. The built-in **Test** tab invokes those routes directly.
