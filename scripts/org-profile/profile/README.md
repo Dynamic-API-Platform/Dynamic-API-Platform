@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/assets/org-logo.png" alt="Dynamic API Platform" width="128" />
+<img src="https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/banner.png" alt="Dynamic API Platform" width="100%" />
 
 # Dynamic API Platform
 
@@ -12,8 +12,6 @@
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/blob/main/frontend/package.json)
 
 [Documentation](https://dynamic-api-platform.github.io/Dynamic-API-Platform/) · [Quick Start](https://dynamic-api-platform.github.io/Dynamic-API-Platform/getting-started/) · [Main Repository](https://github.com/Dynamic-API-Platform/Dynamic-API-Platform) · [Wiki](https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/wiki)
-
-<img src="https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/banner.png" alt="Dynamic API Platform banner" width="100%" />
 
 </div>
 
