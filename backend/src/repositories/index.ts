@@ -9,7 +9,7 @@ export class UserRepository {
   }
 
   async findByLogin(login: string): Promise<IUser | null> {
-    return User.findOne({ login: login.toLowerCase() });
+    return User.findOne({ login: login.toLowerCase() }).populate('groupIds');
   }
 
   async findByEmail(email: string): Promise<IUser | null> {
