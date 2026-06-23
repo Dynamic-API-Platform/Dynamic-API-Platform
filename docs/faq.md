@@ -124,6 +124,10 @@ Yes. All Docker images support multi-arch.
 
 Create groups in **Endpoint Groups**, assign endpoints to groups. The **Endpoints** page shows collapsible sections per group.
 
+### Is there a visual map of all endpoints?
+
+Yes. **API → API Schema** (`/api-schema`) shows a read-only ER-style diagram: endpoint groups, resource tables, field columns, and `reference` links with arrows. See [API Schema]({{ '/api-schema/' | relative_url }}).
+
 ### Is there a light theme?
 
 Yes. Use the **sun/moon** button in the top header (or the link on the login page) to switch between **light** (slate + cyan, CRM-style) and **dark** themes. Preference is saved in `localStorage`.

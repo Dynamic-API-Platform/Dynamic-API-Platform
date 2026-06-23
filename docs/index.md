@@ -23,6 +23,7 @@ Ideal when you need APIs that evolve quickly: internal admin backends, MVPs, int
 | **`reference` fields** | Foreign keys between endpoints; validate links on write; `?populate=` on GET |
 | **Network access** | Restrict dynamic APIs by allowed domains and IP/CIDR pools (group + endpoint) |
 | **Database Explorer** | Raw MongoDB browser/editor at `/database` (requires `manage_users`) |
+| **API Schema** | Read-only ER diagram of endpoints, groups, and reference links at `/api-schema` |
 | **Zero-downtime routes** | Save an endpoint in the UI — callable immediately, no restart |
 | **Auth improvements** | Redirect to login when session expires; fixed JWT refresh permissions |
 | **System endpoint tests** | Tester uses real management API for `/api/users`, `/api/groups`, `/api/profile` |
@@ -44,7 +45,7 @@ Details: [Changelog on GitHub](https://github.com/Dynamic-API-Platform/Dynamic-A
 |----------|-------------|
 | **Dynamic APIs** | CRUD endpoints defined in UI, **available instantly without server restart**, schema validation, path params, **`reference` fields (foreign keys)**, `?populate=` on GET, **network access (domains / IP pools)**, grouped organization |
 | **Security** | JWT auth with refresh, RBAC, **network access rules**, rate limiting, login lockout, audit logs, Helmet, CORS |
-| **Admin Panel** | Dashboard, endpoint editor with linked-endpoint picker, **Network Access** tab, **Database Explorer (raw JSON)**, API tester, auto-docs, users & groups |
+| **Admin Panel** | Dashboard, endpoint editor, **API Schema (ER diagram)**, linked-endpoint picker, **Network Access** tab, **Database Explorer (raw JSON)**, API tester, auto-docs, users & groups |
 | **DevOps** | Docker Compose one-command deploy, health checks, persistent volumes |
 | **Search** | Full-text search on all data list pages (client + server side) |
 
@@ -73,6 +74,7 @@ docker compose up -d
 | [API Reference]({{ '/api-reference/' | relative_url }}) | All management API endpoints |
 | [RBAC]({{ '/rbac/' | relative_url }}) | Permissions, groups, access types |
 | [Dynamic API Engine]({{ '/dynamic-api-engine/' | relative_url }}) | How runtime endpoints work |
+| [API Schema]({{ '/api-schema/' | relative_url }}) | ER-style diagram of endpoints and references |
 | [Database Explorer]({{ '/database/' | relative_url }}) | Raw MongoDB admin UI and API |
 | [Network Access]({{ '/network-access/' | relative_url }}) | Domain and IP/CIDR restrictions for dynamic APIs |
 | [Deployment]({{ '/deployment/' | relative_url }}) | Docker, production, reverse proxy |

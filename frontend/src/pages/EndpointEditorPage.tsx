@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, Plus, Trash2, GripVertical, Send, FileText, Code, Settings } from 'lucide-react';
 import { api } from '../services/api';
 import { Endpoint, EndpointGroup, SchemaField, TestResult } from '../types';
@@ -11,10 +11,14 @@ const FIELD_TYPES = ['string', 'number', 'boolean', 'object', 'array', 'datetime
 export default function EndpointEditorPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [endpoint, setEndpoint] = useState<Endpoint | null>(null);
   const [endpointGroups, setEndpointGroups] = useState<EndpointGroup[]>([]);
   const [loading, setLoading] = useState(true);
-  const [tab, setTab] = useState<'general' | 'schema' | 'test' | 'docs'>('general');
+  const [tab, setTab] = useState<'general' | 'schema' | 'test' | 'docs'>(() => {
+    const t = searchParams.get('tab');
+    return t === 'schema' || t === 'test' || t === 'docs' || t === 'general' ? t : 'general';
+  });
   const [saving, setSaving] = useState(false);
 
   const [testBody, setTestBody] = useState('{}');

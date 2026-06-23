@@ -10,6 +10,7 @@ Create, manage, and test REST APIs without writing backend code.
 - [API Reference](API-Reference)
 - [RBAC & Permissions](RBAC-and-Permissions)
 - [Dynamic API Engine](Dynamic-API-Engine)
+- [API Schema](API-Schema)
 - [Database Explorer](Database-Explorer)
 - [Network Access](Network-Access)
 - [Deployment](Deployment)

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, Users, Shield, Globe, FileText,
   LogOut, Sun, Moon, Zap, Menu, X, Server, Folders, Settings,
-  BookOpen, Github,
+  BookOpen, Github, Network,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -21,6 +21,7 @@ const navSections = [
     items: [
       { to: '/endpoints', icon: Globe, label: 'Endpoints' },
       { to: '/endpoint-groups', icon: Folders, label: 'Endpoint Groups' },
+      { to: '/api-schema', icon: Network, label: 'API Schema' },
     ],
   },
   {

@@ -34,6 +34,7 @@ export interface SchemaField {
   defaultValue?: unknown;
   order: number;
   children?: SchemaField[];
+  refEndpointId?: string;
 }
 
 export interface Endpoint {

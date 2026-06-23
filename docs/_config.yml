@@ -32,6 +32,8 @@ nav:
     url: /rbac/
   - title: Dynamic Engine
     url: /dynamic-api-engine/
+  - title: API Schema
+    url: /api-schema/
   - title: Database Explorer
     url: /database/
   - title: Network Access

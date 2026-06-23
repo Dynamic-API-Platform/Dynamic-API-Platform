@@ -152,6 +152,7 @@ Full guide: [Network Access]({{ '/network-access/' | relative_url }}).
 | Dashboard | `/` | Statistics and charts |
 | Endpoints | `/endpoints` | Manage APIs (grouped tables) |
 | Endpoint Groups | `/endpoint-groups` | Organize endpoints |
+| API Schema | `/api-schema` | Read-only ER diagram (groups, fields, FK arrows) |
 | Users | `/users` | User management |
 | User Groups | `/groups` | RBAC permissions |
 | Audit Logs | `/logs` | System activity |

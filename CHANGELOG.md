@@ -12,7 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Network access rules** — allowed domains and IPv4/CIDR pools on endpoint groups and endpoints
 - **Database Explorer** — browse/edit whitelisted MongoDB collections as JSON (`/database`, `/api/database/*`)
 - **Light theme** — slate + cyan UI aligned with WASH-PHO-CRM dashboard; toggle in header
-- Documentation: [Network Access](docs/network-access.md), [Database Explorer](docs/database.md)
+- **API Schema** — read-only ER diagram of endpoints, groups, and reference links (`/api-schema`)
+- Documentation: [Network Access](docs/network-access.md), [Database Explorer](docs/database.md), [API Schema](docs/api-schema.md)
 
 ### Changed
 - License changed from MIT to Apache License 2.0

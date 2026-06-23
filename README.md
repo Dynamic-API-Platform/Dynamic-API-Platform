@@ -113,6 +113,7 @@ curl http://localhost:3001/api/products -H "Authorization: Bearer $TOKEN"
 | [API Reference](docs/api-reference.md) | All management endpoints |
 | [RBAC](docs/rbac.md) | Permissions and access control |
 | [Dynamic Engine](docs/dynamic-api-engine.md) | How runtime APIs work |
+| [API Schema](docs/api-schema.md) | ER diagram of endpoints and references |
 | [Database Explorer](docs/database.md) | Raw MongoDB admin UI |
 | [Network Access](docs/network-access.md) | Domain and IP/CIDR restrictions |
 | [Deployment](docs/deployment.md) | Production setup |
