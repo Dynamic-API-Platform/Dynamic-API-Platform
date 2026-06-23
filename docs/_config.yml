@@ -22,6 +22,8 @@ exclude:
 nav:
   - title: Home
     url: /
+  - title: Why DAP
+    url: /overview/
   - title: Getting Started
     url: /getting-started/
   - title: Architecture

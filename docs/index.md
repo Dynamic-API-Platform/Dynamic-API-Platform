@@ -60,6 +60,125 @@ Details: [Automation & Integrations]({{ '/automation/' | relative_url }}) · [Ch
 | **DevOps** | Docker Compose one-command deploy, health checks, persistent volumes |
 | **Search** | Full-text search on all data list pages (client + server side) |
 
+## Why Dynamic API Platform?
+
+Most API solutions require developers to write backend code, modify source files, redeploy applications, or restart services when API structures change.
+
+Dynamic API Platform is designed to eliminate that workflow.
+
+**Key advantages:**
+
+- Create and modify REST API endpoints through a web interface.
+- Apply changes **without server restart**.
+- Built-in MongoDB integration.
+- User, group, and permission management.
+- API key authentication.
+- Endpoint-level access control.
+- IP-based security restrictions.
+- Request statistics and monitoring.
+- Error tracking and logging.
+- Single Docker deployment containing frontend, backend, and database.
+- Extensible architecture with JavaScript handlers, webhooks, cron jobs, MCP tools, and custom logic.
+
+The platform focuses on **rapid API deployment and management** without requiring continuous backend development.
+
+## Comparison with Alternative Solutions
+
+| Feature | Dynamic API Platform | Express.js | Directus | Strapi |
+|---------|---------------------|------------|----------|--------|
+| Dynamic endpoint creation | ✅ | ❌ | ⚠️ Limited | ⚠️ Limited |
+| No server restart required | ✅ | ❌ | ⚠️ | ⚠️ |
+| Built-in API management UI | ✅ | ❌ | ✅ | ✅ |
+| User and group permissions | ✅ | Manual | ✅ | ✅ |
+| API key management | ✅ | Manual | ⚠️ | ⚠️ |
+| Request analytics | ✅ | Manual | ⚠️ | ⚠️ |
+| IP restrictions | ✅ | Manual | ❌ | ❌ |
+| Cron jobs | ✅ | Manual | ❌ | ❌ |
+| Webhooks | ✅ | Plugin | ✅ | Plugin |
+| MongoDB support | ✅ | Manual | Plugin | Plugin |
+| Docker deployment | ✅ | Manual | ✅ | ✅ |
+
+Dynamic API Platform is intended for situations where APIs must be created, modified, and managed quickly — without developing and redeploying backend applications.
+
+## Example Use Cases
+
+### Vending Machines
+
+Manage thousands of vending machines through a centralized API:
+
+- Product inventory tracking
+- Sales reporting
+- Device status monitoring
+- Remote configuration updates
+- Service notifications
+
+Example endpoints:
+
+```
+POST /machine/sale
+POST /machine/status
+GET  /machine/statistics
+```
+
+### Car Wash Systems
+
+Create APIs for self-service car wash infrastructure:
+
+- Payment processing
+- Wash program activation
+- Equipment monitoring
+- Operator dashboards
+- Usage statistics
+
+Example endpoints:
+
+```
+POST /payment
+POST /wash/start
+GET  /statistics
+```
+
+### IoT Device Management
+
+Centralized management for connected devices:
+
+- Sensor data collection
+- Device registration
+- Firmware update control
+- Event notifications
+- Telemetry storage
+
+Example endpoints:
+
+```
+POST /sensor/data
+POST /device/register
+GET  /device/status
+```
+
+### Internal Business Tools
+
+Rapidly build APIs for:
+
+- CRM systems
+- ERP integrations
+- Inventory management
+- Customer portals
+- Reporting systems
+
+Without creating a dedicated backend project for each new requirement.
+
+### Automation Platforms
+
+Combine APIs, cron jobs, webhooks, and custom scripts to build workflow automation systems:
+
+- Scheduled tasks
+- Event-driven integrations
+- Third-party service synchronization
+- Data processing pipelines
+
+All managed from a single platform. See [Automation & Integrations]({{ '/automation/' | relative_url }}).
+
 ## Quick Start
 
 ```bash
@@ -80,6 +199,7 @@ docker compose up -d
 
 | Document | Description |
 |----------|-------------|
+| [Why Dynamic API Platform]({{ '/overview/' | relative_url }}) | Key advantages, comparison, example use cases |
 | [Getting Started]({{ '/getting-started/' | relative_url }}) | Installation, first endpoint, curl examples |
 | [Architecture]({{ '/architecture/' | relative_url }}) | System design, layers, data flow |
 | [API Reference]({{ '/api-reference/' | relative_url }}) | All management API endpoints |
