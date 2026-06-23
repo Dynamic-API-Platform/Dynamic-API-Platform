@@ -8,8 +8,6 @@ title: Why Dynamic API Platform
 description: Key advantages, comparison with alternatives, and example use cases
 ---
 
-# Why Dynamic API Platform?
-
 Most API solutions require developers to write backend code, modify source files, redeploy applications, or restart services when API structures change.
 
 Dynamic API Platform is designed to eliminate that workflow.
