@@ -1,7 +1,8 @@
 # Dynamic API Platform Wiki
 
 > This folder mirrors the GitHub Wiki content.  
-> Full documentation is also available on [GitHub Pages](https://dynamic-api-platform.github.io/Dynamic-API-Platform/).
+> Full documentation is also available on [GitHub Pages](https://dynamic-api-platform.github.io/Dynamic-API-Platform/).  
+> Recent changes: [CHANGELOG.md](https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/blob/main/CHANGELOG.md)
 
 ## Pages
 
@@ -15,8 +16,8 @@
 | [RBAC-and-Permissions](RBAC-and-Permissions.md) | Access control |
 | [Dynamic-API-Engine](Dynamic-API-Engine.md) | Runtime engine |
 | [API-Schema](API-Schema.md) | ER diagram of endpoints |
-| [Database-Explorer](Database-Explorer.md) | Raw MongoDB UI |
-| [Network-Access](Network-Access.md) | Domain / IP restrictions |
+| [Network-Access](Network-Access.md) | Domain and IP/CIDR restrictions |
+| [Database-Explorer](Database-Explorer.md) | Raw MongoDB admin UI |
 | [Deployment](Deployment.md) | Production deploy |
 | [Configuration](Configuration.md) | Env vars & settings |
 | [FAQ](FAQ.md) | Common questions |

@@ -3,12 +3,28 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, Users, Shield, Globe, FileText,
   LogOut, Sun, Moon, Zap, Menu, X, Server, Folders, Settings,
-  BookOpen, Github, Network,
+  BookOpen, Github, Network, Database,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
+import { userHasPermission } from '../utils/permissions';
 
-const navSections = [
+type NavItem = {
+  to: string;
+  icon: typeof LayoutDashboard;
+  label: string;
+  permission?: string;
+};
+
+const adminItems: NavItem[] = [
+  { to: '/users', icon: Users, label: 'Users' },
+  { to: '/groups', icon: Shield, label: 'User Groups' },
+  { to: '/settings', icon: Settings, label: 'Settings' },
+  { to: '/logs', icon: FileText, label: 'Logs' },
+  { to: '/database', icon: Database, label: 'Database', permission: 'manage_users' },
+];
+
+const navSections: { label: string; items: NavItem[] }[] = [
   {
     label: 'Overview',
     items: [
@@ -26,12 +42,7 @@ const navSections = [
   },
   {
     label: 'Administration',
-    items: [
-      { to: '/users', icon: Users, label: 'Users' },
-      { to: '/groups', icon: Shield, label: 'User Groups' },
-      { to: '/settings', icon: Settings, label: 'Settings' },
-      { to: '/logs', icon: FileText, label: 'Logs' },
-    ],
+    items: adminItems,
   },
 ];
 
@@ -70,7 +81,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </div>
           <div className="min-w-0 flex-1">
             <div className="truncate text-sm font-semibold">Dynamic API</div>
-            <div className="text-xs text-slate-500">Platform v1.0</div>
+            <div className="text-xs text-slate-500">Platform v1.1</div>
           </div>
           <button
             type="button"
@@ -88,7 +99,9 @@ export default function Layout({ children }: { children: ReactNode }) {
                 {section.label}
               </div>
               <div className="space-y-0.5">
-                {section.items.map((item) => (
+                {section.items
+                  .filter((item) => !item.permission || userHasPermission(user, item.permission))
+                  .map((item) => (
                   <NavLink
                     key={item.to}
                     to={item.to}

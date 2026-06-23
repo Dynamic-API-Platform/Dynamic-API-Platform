@@ -1,5 +1,36 @@
 Full guide: [Database Explorer](https://dynamic-api-platform.github.io/Dynamic-API-Platform/database/)
 
-**Summary:** Raw MongoDB browser at `/database` for admins with `manage_users`. View and edit whitelisted collections as JSON.
+Admin panel section **Database** (`/database`) — browse and edit MongoDB collections as raw JSON.
 
-**API:** `GET/POST/PUT/DELETE /api/database/collections/...`
+## Requirements
+
+Permission **`manage_users`** (default: Super Admin, Admin).
+
+## Collections
+
+`users`, `groups`, `endpoints`, `endpointgroups`, `endpointdatas`, `logs`, `systemsettings`
+
+## Features
+
+- List collections with document counts
+- Paginated document table with JSON preview
+- View / edit / create / delete via JSON editor
+- Search by `_id` or common text fields
+- Passwords redacted in `users` collection
+
+## API
+
+```
+GET    /api/database/collections
+GET    /api/database/collections/:name?page&limit&search
+GET    /api/database/collections/:name/:id
+POST   /api/database/collections/:name
+PUT    /api/database/collections/:name/:id
+DELETE /api/database/collections/:name/:id
+```
+
+All routes require `manage_users`.
+
+## Safety
+
+Use for debugging and one-off fixes. Prefer **Users**, **Endpoints**, and dynamic APIs for normal operations.

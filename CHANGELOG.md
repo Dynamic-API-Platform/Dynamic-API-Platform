@@ -7,25 +7,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Planned
+- OpenAPI/Swagger export for dynamic endpoints
+- Webhook notifications on endpoint events
+- Multi-tenant workspace support
+- Endpoint versioning
+
+## [1.1.0] - 2026-06-18
+
 ### Added
-- **`reference` schema fields** — foreign keys between endpoints with validation and `?populate=` on GET
-- **Network access rules** — allowed domains and IPv4/CIDR pools on endpoint groups and endpoints
-- **Database Explorer** — browse/edit whitelisted MongoDB collections as JSON (`/database`, `/api/database/*`)
-- **Light theme** — slate + cyan UI aligned with WASH-PHO-CRM dashboard; toggle in header
+- **`reference` schema field type** — link records between endpoints (foreign keys)
+  - Target endpoint selector in the schema editor (**Linked endpoint**)
+  - Validation on create/update: referenced record must exist in the target collection
+  - **`?populate=true`** or **`?populate=fieldName`** on GET requests to embed linked records
+- **Database Explorer** — admin UI (`/database`) and REST API (`/api/database/*`) for raw MongoDB access
+  - Whitelisted collections: users, groups, endpoints, endpointgroups, endpointdatas, logs, systemsettings
+  - View, create, edit, delete documents as JSON; search and pagination
+  - Requires `manage_users`; sensitive user fields redacted; changes audit-logged
+- **Network access rules** — restrict dynamic endpoints by allowed **domains** and **IP/CIDR pools**
+  - Configurable on **endpoint groups** and individual **endpoints** (Network Access tab/section)
+  - Group inheritance with merged rules; enforced at runtime before JWT access-type checks
+  - Admin tester can simulate client IP and `Origin` header
 - **API Schema** — read-only ER diagram of endpoints, groups, and reference links (`/api-schema`)
+- **Light theme** — slate + cyan UI aligned with WASH-PHO-CRM dashboard; toggle in header
 - Documentation: [Network Access](docs/network-access.md), [Database Explorer](docs/database.md), [API Schema](docs/api-schema.md)
+- Session handling: centralized `UnauthorizedError` and auth state sync on token expiry
+- Zero-downtime API creation documented (no server restart on new routes); comparison with Strapi/Directus
 
 ### Changed
-- License changed from MIT to Apache License 2.0
+- License changed from MIT to **Apache License 2.0**
 - GitHub Pages and repository URLs migrated to `Dynamic-API-Platform` organization
 - Admin UI layout: top header bar with user info, theme toggle, and logout
+- System endpoints **List Users** and **List Groups**: `accessType` set to `authenticated` (documented as management API; RBAC enforced on the real route)
+- Seed migration: existing system endpoints get updated `accessType` and descriptions on backend startup
 
 ### Fixed
+- **Session expiry UX** — expired or invalid tokens redirect to `/login` instead of showing "Failed to load dashboard"
+- **JWT refresh bug** — access tokens issued after refresh had empty `permissions` when user groups were populated from MongoDB
+- **System endpoint tester** — built-in test for `/api/users`, `/api/groups`, `/api/profile` now calls real management APIs with RBAC
+- **Dynamic engine** — GET/PUT/DELETE on paths with parameters (e.g. `/api/products/:id`) now resolve records using the collection base path
 - Broken images in `docs/screenshots.md` on GitHub (use raw.githubusercontent.com URLs)
 - Nginx `proxy_pass` in frontend container — full API paths (e.g. `/api/auth/login`) now reach backend
-- JWT refresh token missing permissions after idle session
-- Session expiry redirects to `/login` instead of dashboard error
-- System endpoint tester uses real management API routes
 
 ## [1.0.0] - 2026-06-18
 
@@ -97,14 +119,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Default endpoint groups
 - CRM, SHOP, DEVICES
 
----
-
-## [Unreleased]
-
-### Planned
-- OpenAPI/Swagger export for dynamic endpoints
-- Webhook notifications on endpoint events
-- Multi-tenant workspace support
-- Endpoint versioning
-
+[1.1.0]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.0.0
