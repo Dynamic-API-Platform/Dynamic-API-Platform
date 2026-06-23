@@ -104,6 +104,10 @@ Existing records are **not** automatically migrated. New validation applies on w
 
 Default Docker mapping `8080:80`. Change in `docker-compose.yml` if port 8080 is occupied.
 
+### Why does login return "Endpoint not found" through port 8080?
+
+Usually a misconfigured nginx `proxy_pass` that forwards `POST /api/` instead of the full path. Rebuild the frontend image from the latest `frontend/nginx.conf` or use `proxy_pass http://backend:3001;` without a URI suffix when using variables.
+
 ### Can I use external MongoDB?
 
 Yes. Set `MONGODB_URI` to your MongoDB Atlas or managed instance URL.
@@ -120,9 +124,9 @@ Yes. All Docker images support multi-arch.
 
 Create groups in **Endpoint Groups**, assign endpoints to groups. The **Endpoints** page shows collapsible sections per group.
 
-### Is there dark mode only?
+### Is there a light theme?
 
-Yes, v1.0 ships with a dark theme inspired by 3x-ui panel style.
+Yes. Use the **sun/moon** button in the top header (or the link on the login page) to switch between **light** (slate + cyan, CRM-style) and **dark** themes. Preference is saved in `localStorage`.
 
 ---
 

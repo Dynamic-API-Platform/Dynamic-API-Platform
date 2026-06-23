@@ -7,11 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **`reference` schema fields** — foreign keys between endpoints with validation and `?populate=` on GET
+- **Network access rules** — allowed domains and IPv4/CIDR pools on endpoint groups and endpoints
+- **Database Explorer** — browse/edit whitelisted MongoDB collections as JSON (`/database`, `/api/database/*`)
+- **Light theme** — slate + cyan UI aligned with WASH-PHO-CRM dashboard; toggle in header
+- Documentation: [Network Access](docs/network-access.md), [Database Explorer](docs/database.md)
+
 ### Changed
 - License changed from MIT to Apache License 2.0
+- GitHub Pages and repository URLs migrated to `Dynamic-API-Platform` organization
+- Admin UI layout: top header bar with user info, theme toggle, and logout
 
 ### Fixed
 - Broken images in `docs/screenshots.md` on GitHub (use raw.githubusercontent.com URLs)
+- Nginx `proxy_pass` in frontend container — full API paths (e.g. `/api/auth/login`) now reach backend
+- JWT refresh token missing permissions after idle session
+- Session expiry redirects to `/login` instead of dashboard error
+- System endpoint tester uses real management API routes
 
 ## [1.0.0] - 2026-06-18
 

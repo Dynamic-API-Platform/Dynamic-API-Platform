@@ -9,6 +9,8 @@ description: UI screenshots from localhost deployment
 
 Screenshots of **Dynamic API Platform v1.0** running at `http://localhost:8080`.
 
+> The gallery shows the default deployment. The admin panel also supports a **light theme** (slate + cyan) — toggle via the header sun/moon button.
+
 ## Login
 
 ![Login page](https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/screenshots/login.png)

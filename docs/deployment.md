@@ -41,6 +41,8 @@ Change host ports in `docker-compose.yml` if needed.
 
 ### Volumes
 
+Named volume **`dap_mongodb_data`** stores all platform data (users, endpoints, endpoint data, logs metadata). **Do not run `docker compose down -v`** unless you intend to wipe the database.
+
 ```bash
 # List volumes
 docker volume ls | grep dap
@@ -49,6 +51,22 @@ docker volume ls | grep dap
 docker exec dap-mongodb mongodump --out=/data/backup
 docker cp dap-mongodb:/data/backup ./mongodb-backup-$(date +%Y%m%d)
 ```
+
+### Frontend nginx proxy
+
+The production frontend container proxies `/api/*` to the backend. Use a **direct upstream** without URI rewriting:
+
+```nginx
+location /api/ {
+    proxy_pass http://backend:3001;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+Using `proxy_pass` with variables and a path suffix can strip the request path and break login (`Endpoint not found`).
 
 ### Stop and remove
 

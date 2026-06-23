@@ -26,6 +26,7 @@ Ideal when you need APIs that evolve quickly: internal admin backends, MVPs, int
 | **Zero-downtime routes** | Save an endpoint in the UI — callable immediately, no restart |
 | **Auth improvements** | Redirect to login when session expires; fixed JWT refresh permissions |
 | **System endpoint tests** | Tester uses real management API for `/api/users`, `/api/groups`, `/api/profile` |
+| **UI themes** | Light and dark themes (slate + cyan); toggle in header or login page |
 | **License** | Apache License 2.0 |
 
 Details: [Changelog on GitHub](https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/blob/main/CHANGELOG.md)

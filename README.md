@@ -58,27 +58,32 @@ docker compose up -d
 ## Features
 
 ### Dynamic API Engine
-- Create REST endpoints (GET/POST/PUT/PATCH/DELETE) via UI — no code deploy needed
-- Schema builder: `string`, `number`, `boolean`, `object`, `array`, `datetime`, `json`
-- Path parameters (`/api/items/:id`), validation, default values
+- Create REST endpoints (GET/POST/PUT/PATCH/DELETE) via UI — **no server restart**
+- Schema builder: `string`, `number`, `boolean`, `object`, `array`, `datetime`, `json`, **`reference`** (foreign keys)
+- Path parameters (`/api/items/:id`), validation, `?populate=` for linked records
+- **Network access** — restrict callers by allowed domains and IPv4/CIDR pools (group + endpoint)
 - Built-in API tester and auto-generated documentation
 
 ### Security
 - JWT authentication with refresh tokens
 - RBAC with 5 system groups + custom groups
+- **Network access rules** (domain / IP) on dynamic endpoints
 - Login lockout, API rate limiting, audit logs
 - Helmet, CORS, CSRF token endpoint, bcrypt passwords
 
 ### Admin Panel
 - Dashboard with charts (requests, errors, user activity)
 - Grouped endpoint tables with search and filters
+- **Network Access** tab on endpoints; rules on endpoint groups
+- **Database Explorer** — raw MongoDB JSON browser (`/database`, `manage_users`)
 - Users & groups management with pagination
 - System monitoring (CPU, memory, disk, network)
 - Settings: auth, rate limits, log retention, pagination
+- **Light and dark themes** (toggle in header)
 
 ### DevOps
 - One-command Docker Compose deployment
-- Health checks, persistent volumes, nginx API proxy
+- Health checks, persistent volumes (`dap_mongodb_data`), nginx API proxy
 - GitHub Actions CI, GitHub Pages docs
 
 ## Example
@@ -108,6 +113,8 @@ curl http://localhost:3001/api/products -H "Authorization: Bearer $TOKEN"
 | [API Reference](docs/api-reference.md) | All management endpoints |
 | [RBAC](docs/rbac.md) | Permissions and access control |
 | [Dynamic Engine](docs/dynamic-api-engine.md) | How runtime APIs work |
+| [Database Explorer](docs/database.md) | Raw MongoDB admin UI |
+| [Network Access](docs/network-access.md) | Domain and IP/CIDR restrictions |
 | [Deployment](docs/deployment.md) | Production setup |
 | [Configuration](docs/configuration.md) | Environment variables |
 | [FAQ](docs/faq.md) | Common questions |

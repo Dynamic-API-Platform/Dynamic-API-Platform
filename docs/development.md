@@ -34,7 +34,11 @@ npm install
 npm run dev    # Vite on port 5173
 ```
 
-Open http://localhost:5173
+Open http://localhost:5173 — Vite proxies `/api` to the backend on port 3001.
+
+### UI themes
+
+Light and dark themes are available. Toggle in the admin header; preference is stored in `localStorage` under key `theme`.
 
 ## Scripts
 

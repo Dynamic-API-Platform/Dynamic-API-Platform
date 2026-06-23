@@ -125,6 +125,26 @@ curl "http://localhost:3001/api/products?populate=categoryId" \
 
 Details: [Dynamic API Engine — References]({{ '/dynamic-api-engine/' | relative_url }}#references-foreign-keys-between-endpoints).
 
+## Restrict API access by domain or IP
+
+Network access is separate from JWT/RBAC. Use it to allow only specific frontends or server subnets.
+
+### Via Admin UI
+
+1. **Endpoint Groups** → edit group → **Network Access** section  
+   - Enable rules, add domains (`app.example.com`, `*.example.com`) and/or IP-CIDR (`10.0.0.0/8`)
+2. **Endpoints** → edit endpoint → **Network Access** tab  
+   - Toggle **Inherit rules from endpoint group** or define endpoint-only rules
+
+### Example: partner webhook (IP only)
+
+1. Create `POST /api/webhooks/partner` with access type `public` or `authenticated`
+2. **Network Access** tab → disable inherit → enable rules
+3. Add IP range: `203.0.113.0/24`
+4. Save — calls from other IPs return `403 Forbidden: network access denied`
+
+Full guide: [Network Access]({{ '/network-access/' | relative_url }}).
+
 ## Navigation overview
 
 | Section | Path | Description |
@@ -138,6 +158,8 @@ Details: [Dynamic API Engine — References]({{ '/dynamic-api-engine/' | relativ
 | Database | `/database` | Raw MongoDB collections (JSON; requires `manage_users`) |
 | System | `/system` | Server resources |
 | Settings | `/settings` | Platform configuration |
+
+Network access is configured under **Endpoint Groups** and the **Network Access** tab on each endpoint — not in Settings.
 
 ## Interface preview
 
