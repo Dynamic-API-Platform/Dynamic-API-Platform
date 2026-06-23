@@ -17,6 +17,7 @@ import ApiDocsPage from './pages/ApiDocsPage';
 import CronJobsPage from './pages/CronJobsPage';
 import WebhooksPage from './pages/WebhooksPage';
 import ApiKeysPage from './pages/ApiKeysPage';
+import McpPage from './pages/McpPage';
 import DatabasePage from './pages/DatabasePage';
 import { LoadingSpinner } from './components/UI';
 
@@ -60,6 +61,7 @@ function AppRoutes() {
       <Route path="/cron" element={<ProtectedRoute><CronJobsPage /></ProtectedRoute>} />
       <Route path="/webhooks" element={<ProtectedRoute><WebhooksPage /></ProtectedRoute>} />
       <Route path="/api-keys" element={<ProtectedRoute><ApiKeysPage /></ProtectedRoute>} />
+      <Route path="/mcp" element={<ProtectedRoute><McpPage /></ProtectedRoute>} />
       <Route path="/database" element={<ProtectedRoute><DatabasePage /></ProtectedRoute>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

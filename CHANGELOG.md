@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **MCP Server** admin page at `/mcp` — tools table, JSON-RPC examples, endpoint URL
+
+### Fixed
+- Sidebar layout — navigation scrolls inside the panel; Resources footer stays visible without page scroll
+- Swagger UI — load `swagger-ui-standalone-preset.js` for `StandaloneLayout`
+
 ### Planned
 - Multi-tenant workspace support
 

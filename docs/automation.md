@@ -82,6 +82,8 @@ Includes JWT and API key security schemes, versioned paths, and reference fields
 
 ## MCP Server (AI agents)
 
+**UI:** `/mcp` (requires `manage_api`) — endpoint URL, JSON-RPC examples, registered tools table
+
 **Endpoint:** `POST /api/mcp` (JSON-RPC 2.0)
 
 Compatible with MCP clients (Claude, ChatGPT tools, OpenWebUI):

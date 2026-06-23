@@ -22,7 +22,7 @@ Ideal when you need APIs that evolve quickly: internal admin backends, MVPs, int
 |--------|---------|
 | **v1.3 — Cron** | Scheduled jobs (JavaScript, HTTP, internal endpoint) at `/cron` |
 | **v1.3 — Webhooks** | Outbound event subscriptions with optional HMAC at `/webhooks` |
-| **v1.3 — MCP** | JSON-RPC server at `POST /api/mcp` for AI agent tool integration |
+| **v1.3 — MCP** | JSON-RPC at `POST /api/mcp` + admin UI at `/mcp` (tools list, examples) |
 | **v1.3 — API keys** | Machine-to-machine auth via `X-API-Key` at `/api-keys` |
 | **v1.3 — API versioning** | Serve `/api/v1/...` alongside `/api/...` per endpoint |
 | **v1.2 — OpenAPI** | Auto-generated spec at `/api/openapi.json`, Swagger UI at `/api-docs` |
@@ -56,7 +56,7 @@ Details: [Automation & Integrations]({{ '/automation/' | relative_url }}) · [Ch
 | **Automation** | **Cron scheduler**, **outbound webhooks**, **JavaScript handlers**, **MCP server** for AI agents, **API keys** for M2M auth |
 | **OpenAPI** | Auto-generated spec, Swagger UI, embedded **API Docs** in admin panel |
 | **Security** | JWT auth with refresh, RBAC, **API keys**, **network access rules**, rate limiting, login lockout, audit logs, Helmet, CORS |
-| **Admin Panel** | Dashboard, endpoint editor, **Handler tab**, **API Schema (ER diagram)**, **API Docs**, **Cron / Webhooks / API Keys**, linked-endpoint picker, **Network Access** tab, **Database Explorer (raw JSON)**, API tester, users & groups, **project export/import** |
+| **Admin Panel** | Dashboard, endpoint editor, **Handler tab**, **API Schema (ER diagram)**, **API Docs**, **Cron / Webhooks / API Keys / MCP Server**, linked-endpoint picker, **Network Access** tab, **Database Explorer (raw JSON)**, API tester, users & groups, **project export/import**, scrollable sidebar |
 | **DevOps** | Docker Compose one-command deploy, health checks, persistent volumes |
 | **Search** | Full-text search on all data list pages (client + server side) |
 

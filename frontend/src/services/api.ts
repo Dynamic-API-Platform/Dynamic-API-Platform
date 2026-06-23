@@ -474,6 +474,11 @@ class ApiClient {
   async deleteApiKey(id: string) {
     await this.request(`/api/api-keys/${id}`, { method: 'DELETE' });
   }
+
+  async getMcpTools() {
+    const res = await this.request<{ success: boolean; data: unknown[] }>('/api/mcp/tools');
+    return res.data;
+  }
 }
 
 export const api = new ApiClient();

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, Users, Shield, Globe, FileText,
   LogOut, Sun, Moon, Zap, Menu, X, Server, Folders, Settings,
-  BookOpen, Github, Network, Database, FileCode, Clock, Webhook, Key,
+  BookOpen, Github, Network, Database, FileCode, Clock, Webhook, Key, Bot,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -47,6 +47,7 @@ const navSections: { label: string; items: NavItem[] }[] = [
       { to: '/cron', icon: Clock, label: 'Cron Jobs', permission: 'manage_api' },
       { to: '/webhooks', icon: Webhook, label: 'Webhooks', permission: 'manage_api' },
       { to: '/api-keys', icon: Key, label: 'API Keys', permission: 'manage_api' },
+      { to: '/mcp', icon: Bot, label: 'MCP Server', permission: 'manage_api' },
     ],
   },
   {
@@ -78,10 +79,10 @@ export default function Layout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
       <aside
         className={[
-          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform dark:border-slate-800 dark:bg-slate-900 lg:static lg:translate-x-0',
+          'fixed inset-y-0 left-0 z-40 flex h-screen w-64 shrink-0 flex-col border-r border-slate-200 bg-white transition-transform dark:border-slate-800 dark:bg-slate-900 lg:static lg:translate-x-0',
           sidebarOpen ? 'translate-x-0' : '-translate-x-full',
         ].join(' ')}
       >
@@ -102,7 +103,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </button>
         </div>
 
-        <nav className="flex-1 overflow-y-auto p-3">
+        <nav className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3">
           {navSections.map((section) => (
             <div key={section.label} className="mb-4 last:mb-0">
               <div className="mb-1 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
@@ -171,7 +172,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         />
       )}
 
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
         <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-4 dark:border-slate-800 dark:bg-slate-900 lg:px-6">
           <button
             type="button"
@@ -199,7 +200,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </div>
         </header>
 
-        <main className="flex-1 overflow-auto p-4 lg:p-6">
+        <main className="min-h-0 flex-1 overflow-auto p-4 lg:p-6">
           {children}
         </main>
       </div>

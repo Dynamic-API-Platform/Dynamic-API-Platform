@@ -65,6 +65,12 @@ Screenshots of **Dynamic API Platform v1.3** running at `http://localhost:8080`.
 
 **URL:** `/api-keys` — machine-to-machine authentication
 
+## MCP Server
+
+![MCP Server](https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/screenshots/mcp-server.png)
+
+**URL:** `/mcp` — MCP tools list, JSON-RPC examples, connection info for AI agents
+
 ## Database Explorer
 
 ![Database Explorer](https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/screenshots/database.png)
