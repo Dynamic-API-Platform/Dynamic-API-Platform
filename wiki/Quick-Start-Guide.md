@@ -43,7 +43,14 @@ Same path `/api/products`, method POST, same schema.
 
 **Administration → Database** — view/edit MongoDB collections as JSON. Requires `manage_users`.
 
-## 9. Test
+## 10. Automation (optional)
+
+- **Cron Jobs** (`/cron`) — scheduled tasks
+- **Webhooks** (`/webhooks`) — outbound events
+- **API Keys** (`/api-keys`) — M2M auth
+- **MCP Server** (`/mcp`) — AI agent tools via JSON-RPC
+
+## 11. Test
 
 **Test** tab → Send request with JSON body.
 

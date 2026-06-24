@@ -4,8 +4,8 @@ See full documentation: [Architecture](https://dynamic-api-platform.github.io/Dy
 
 - **Frontend:** React 18, TypeScript, Vite, Tailwind CSS
 - **Backend:** Node.js, Express, TypeScript, Mongoose
-- **Database:** MongoDB 7
-- **Deploy:** Docker Compose
+- **Database:** MongoDB 7 (single node, replica set, or Atlas)
+- **Deploy:** Docker Compose, Docker replica set, or Kubernetes (`k8s/`)
 
 ## Layers
 
