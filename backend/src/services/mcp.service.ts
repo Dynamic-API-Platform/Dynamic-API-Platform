@@ -16,6 +16,10 @@ type McpTool = {
 };
 
 function toolName(method: string, path: string): string {
+  return buildMcpToolName(method, path);
+}
+
+export function buildMcpToolName(method: string, path: string): string {
   return `${method.toLowerCase()}_${path.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_|_$/g, '')}`;
 }
 
@@ -87,7 +91,7 @@ export class McpService {
             result: {
               protocolVersion: '2024-11-05',
               capabilities: { tools: {} },
-              serverInfo: { name: 'dynamic-api-platform', version: '1.3.0' },
+              serverInfo: { name: 'dynamic-api-platform', version: '1.4.0' },
             },
           };
 

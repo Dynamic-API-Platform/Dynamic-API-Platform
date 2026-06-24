@@ -9,6 +9,7 @@ import {
   validateDataAgainstSchema,
   validateReferences,
   applyDefaults,
+  pickSchemaData,
   generateExamples,
   matchDynamicPath,
   getCollectionPath,
@@ -19,6 +20,7 @@ import {
   checkNetworkAccess,
 } from '../utils';
 import { resolveLogSource, shouldSkipApiAuditLog } from '../utils/logSource';
+import { resolveLogUserId, compactLogEntry } from '../utils/auditLog';
 import { LogSource } from '../types';
 import { CreateEndpointDto, UpdateEndpointDto, CreateEndpointGroupDto, UpdateEndpointGroupDto, TestEndpointDto } from '../dto';
 import { IEndpoint } from '../models';
@@ -571,11 +573,11 @@ export class DynamicEngine {
         }
 
       case 'POST': {
-        const body = (req.body || {}) as Record<string, unknown>;
-        const validation = validateDataAgainstSchema(body, endpoint.fields);
+        const rawBody = (req.body || {}) as Record<string, unknown>;
+        const validation = validateDataAgainstSchema(rawBody, endpoint.fields);
         if (!validation.valid) throw new Error(validation.errors.join(', '));
 
-        const data = applyDefaults(body, endpoint.fields);
+        const data = applyDefaults(pickSchemaData(rawBody, endpoint.fields), endpoint.fields);
         await this.assertReferences(data, endpoint.fields);
         const record = await endpointDataRepository.create(endpoint._id.toString(), collectionPath, data);
         return { success: true, data: { id: record._id, ...record.data } };
@@ -589,7 +591,13 @@ export class DynamicEngine {
           throw new Error('Record not found');
         }
 
-        const body = (req.body || {}) as Record<string, unknown>;
+        const rawBody = (req.body || {}) as Record<string, unknown>;
+        if (endpoint.method === 'PATCH') {
+          const patchValidation = validateDataAgainstSchema(rawBody, endpoint.fields);
+          if (!patchValidation.valid) throw new Error(patchValidation.errors.join(', '));
+        }
+
+        const body = pickSchemaData(rawBody, endpoint.fields);
         const merged = endpoint.method === 'PATCH'
           ? { ...existing.data, ...body }
           : body;
@@ -597,8 +605,9 @@ export class DynamicEngine {
         const validation = validateDataAgainstSchema(merged as Record<string, unknown>, endpoint.fields);
         if (!validation.valid) throw new Error(validation.errors.join(', '));
 
-        await this.assertReferences(merged as Record<string, unknown>, endpoint.fields);
-        const updated = await endpointDataRepository.update(idParam, merged as Record<string, unknown>);
+        const sanitized = pickSchemaData(merged as Record<string, unknown>, endpoint.fields);
+        await this.assertReferences(sanitized, endpoint.fields);
+        const updated = await endpointDataRepository.update(idParam, sanitized);
         return { success: true, data: { id: updated!._id, ...updated!.data } };
       }
 
@@ -667,27 +676,17 @@ export class DynamicEngine {
       const source = resolveLogSource(meta, user);
 
       if (!shouldSkipApiAuditLog(meta)) {
-        await logRepository.create({
+        await logRepository.create(compactLogEntry({
           action: 'api_call',
           source,
-          userId: user?.userId as unknown as import('mongoose').Types.ObjectId,
+          userId: resolveLogUserId(user),
           endpointId: endpoint._id,
           message: `${method} ${requestPath} - ${statusCode}`,
           statusCode,
           responseTime,
           ip: meta?.ip,
           userAgent: meta?.userAgent,
-        });
-
-        if (source === 'api_key') {
-          await logRepository.create({
-            action: 'api_key_used',
-            source: 'api_key',
-            message: `API key ${user?.login?.replace('apikey:', '') || ''} → ${method} ${requestPath}`,
-            ip: meta?.ip,
-            userAgent: meta?.userAgent,
-          });
-        }
+        }));
       }
 
       void webhookService.dispatch('endpoint.called', {
@@ -718,10 +717,10 @@ export class DynamicEngine {
       const source = resolveLogSource(meta, user);
 
       if (!shouldSkipApiAuditLog(meta)) {
-        await logRepository.create({
+        await logRepository.create(compactLogEntry({
           action: 'error',
           source,
-          userId: user?.userId as unknown as import('mongoose').Types.ObjectId,
+          userId: resolveLogUserId(user),
           endpointId: endpoint._id,
           message: `${method} ${requestPath} - ${statusCode}: ${message}`,
           statusCode,
@@ -729,7 +728,7 @@ export class DynamicEngine {
           ip: meta?.ip,
           userAgent: meta?.userAgent,
           details: { error: message },
-        });
+        }));
       }
 
       return { statusCode, body: { success: false, error: message } };

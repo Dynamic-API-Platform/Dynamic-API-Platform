@@ -96,5 +96,7 @@ const EndpointSchema = new Schema<IEndpoint>(
 );
 
 EndpointSchema.index({ path: 1, method: 1 }, { unique: true });
+EndpointSchema.index({ enabled: 1, isSystem: 1 });
+EndpointSchema.index({ groupId: 1 });
 
 export const Endpoint = mongoose.model<IEndpoint>('Endpoint', EndpointSchema);

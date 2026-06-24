@@ -2,6 +2,9 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 import { SchemaField, FieldType, ExamplePayload } from '../types';
+import { findUnknownFields } from './schema';
+
+export { findUnknownFields, pickSchemaData } from './schema';
 
 export async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, 12);
@@ -124,6 +127,8 @@ export function validateDataAgainstSchema(
         break;
     }
   }
+
+  errors.push(...findUnknownFields(data, schema));
 
   return { valid: errors.length === 0, errors };
 }

@@ -269,7 +269,7 @@ export class OpenApiService {
       info: {
         title: 'Dynamic API Platform',
         description: 'Auto-generated OpenAPI specification for dynamic REST endpoints.',
-        version: '1.3.0',
+        version: '1.4.0',
       },
       servers: [{ url: serverUrl }],
       tags: groups.map((g) => ({ name: g.name, description: g.description })),

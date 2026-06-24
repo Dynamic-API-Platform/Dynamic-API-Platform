@@ -92,7 +92,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </div>
           <div className="min-w-0 flex-1">
             <div className="truncate text-sm font-semibold">Dynamic API</div>
-            <div className="text-xs text-slate-500">Platform v1.3</div>
+            <div className="text-xs text-slate-500">Platform v1.4</div>
           </div>
           <button
             type="button"

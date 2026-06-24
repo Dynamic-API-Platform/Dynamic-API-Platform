@@ -1,6 +1,6 @@
 {
   "name": "dynamic-api-platform",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Create, manage and test dynamic REST APIs without writing backend code",
   "private": true,
   "license": "Apache-2.0",
@@ -37,7 +37,8 @@
     "k8s:build": "docker build -t dap/backend:latest ./backend && docker build -t dap/frontend:latest --build-arg VITE_API_URL= ./frontend",
     "k8s:deploy": "./k8s/scripts/deploy.sh",
     "k8s:status": "kubectl get pods,svc,ingress -n dap",
-    "k8s:teardown": "kubectl delete -k k8s"
+    "k8s:teardown": "kubectl delete -k k8s",
+    "screenshots": "node scripts/capture-screenshots.mjs http://localhost:8080"
   },
   "engines": {
     "node": ">=20.0.0"

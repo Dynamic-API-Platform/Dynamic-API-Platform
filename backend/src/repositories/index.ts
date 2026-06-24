@@ -1,6 +1,7 @@
 import { User, IUser, Group, IGroup, Endpoint, IEndpoint, EndpointGroup, IEndpointGroup, EndpointData, IEndpointData, Log, ILog } from '../models';
 import { PaginatedResult } from '../types';
 import { buildTextSearchFilter } from '../utils';
+import { compactLogEntry } from '../utils/auditLog';
 import { FilterQuery } from 'mongoose';
 
 export class UserRepository {
@@ -198,7 +199,7 @@ export class EndpointDataRepository {
 
 export class LogRepository {
   async create(data: Partial<ILog>): Promise<ILog> {
-    return Log.create(data);
+    return Log.create(compactLogEntry(data));
   }
 
   async findAll(page = 1, limit = 50, filter: FilterQuery<ILog> = {}): Promise<PaginatedResult<ILog>> {

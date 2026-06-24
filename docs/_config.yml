@@ -54,6 +54,8 @@ nav:
     url: /configuration/
   - title: Development
     url: /development/
+  - title: Testing
+    url: /testing/
   - title: Screenshots
     url: /screenshots/
   - title: FAQ

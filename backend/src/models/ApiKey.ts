@@ -32,4 +32,6 @@ const ApiKeySchema = new Schema<IApiKey>(
   { timestamps: true }
 );
 
+ApiKeySchema.index({ keyPrefix: 1, enabled: 1 });
+
 export const ApiKey = mongoose.model<IApiKey>('ApiKey', ApiKeySchema);

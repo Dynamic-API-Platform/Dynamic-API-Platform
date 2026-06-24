@@ -177,6 +177,21 @@ cd frontend && npm install && npm run dev
 
 See [Development Guide](docs/development.md) for details.
 
+## Testing
+
+```bash
+cd backend
+npm test                 # unit tests (Vitest, 27 tests)
+npm run test:load        # load test — backend must be running
+```
+
+| Type | Docs |
+|------|------|
+| Unit tests, CI, validation | [docs/testing.md](docs/testing.md) |
+| Load test env vars | `LOAD_TEST_URL`, `LOAD_TEST_DURATION`, `LOAD_TEST_CONNECTIONS` |
+
+CI runs `npm test` + `npm run build` on every push to `main`.
+
 ## Environment Variables
 
 | Variable | Default | Description |

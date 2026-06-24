@@ -7,7 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Planned
+- Multi-tenant workspace support
+
+## [1.4.0] - 2026-06-24
+
 ### Added
+- **Three deployment variants** — [Deployment Variants](docs/deployment-variants.md): Docker single-node, Docker MongoDB replica set (3 nodes), Kubernetes (StatefulSet + scaled backend)
+- **Docker replica set** — `docker-compose.replica.yml`, `docker/mongo/replica-init.sh`, npm scripts `docker:replica:*`
+- **Kubernetes manifests** — `k8s/` (MongoDB StatefulSet, backend/frontend Deployments, `k8s/scripts/deploy.sh`, npm scripts `k8s:*`)
+- **Unit tests** (Vitest) — schema validation, network access, audit logs, MCP naming, security helpers (27 tests)
+- **Load test** — `npm run test:load` (autocannon) for health, dashboard, endpoints scenarios
+- **Testing docs** — [docs/testing.md](docs/testing.md); CI runs `npm test`
+- **Screenshot automation** — `npm run screenshots` / `scripts/capture-screenshots.mjs`; refreshed UI gallery (14 pages including Logs)
+- **Runtime strict validation** — reject unknown fields on POST/PUT/PATCH; `pickSchemaData` strips extra fields before MongoDB write
 - **MCP Server** admin page at `/mcp` — tools table, JSON-RPC examples, endpoint URL
 - **Dashboard automation KPIs** — Cron Jobs, Webhooks, API Keys, MCP Tools cards
 - **Dashboard charts** — webhook deliveries, cron runs, API traffic by source (direct/MCP/cron/API key)
@@ -15,12 +28,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Audit log actions** — `webhook_dispatch`, `cron_run`, `mcp_call`, `api_key_used` with `source` field
 - **Logs filters** — new action types and Source column
 
+### Changed
+- **MongoDB indexes** — compound indexes on `EndpointData`, `Log`, `Endpoint`, `ApiKey` for list/stats queries
+- **MongoDB replica set URI** support in `database.ts` (`serverSelectionTimeoutMS`, `retryWrites`)
+- **Lean audit logs** — `compactLogEntry` omits empty fields; invalid API-key user IDs no longer stored on logs
+- **Removed duplicate** `api_key_used` log entries (API key traffic tracked via `source` on `api_call`)
+- **Docs screenshots** — relative URLs for GitHub Pages; dashboard reflects automation KPIs
+
 ### Fixed
 - Sidebar layout — navigation scrolls inside the panel; Resources footer stays visible without page scroll
 - Swagger UI — load `swagger-ui-standalone-preset.js` for `StandaloneLayout`
-
-### Planned
-- Multi-tenant workspace support
+- K8s deploy script — correct project root path; MongoDB StatefulSet healthcheck YAML quoting
 
 ## [1.3.0] - 2026-06-18
 
@@ -153,6 +171,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Default endpoint groups
 - CRM, SHOP, DEVICES
 
+[1.4.0]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.4.0
 [1.3.0]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.3.0
 [1.2.0]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.2.0
 [1.1.0]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.1.0

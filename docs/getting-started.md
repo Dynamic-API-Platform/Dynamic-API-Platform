@@ -179,9 +179,9 @@ Network access is configured under **Endpoint Groups** and the **Network Access*
 
 ## Interface preview
 
-![Login page](https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/screenshots/login.png)
+![Login page]({{ '/screenshots/login.png' | relative_url }})
 
-![Dashboard](https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/screenshots/dashboard.png)
+![Dashboard]({{ '/screenshots/dashboard.png' | relative_url }})
 
 [Full screenshot gallery →]({{ '/screenshots/' | relative_url }})
 

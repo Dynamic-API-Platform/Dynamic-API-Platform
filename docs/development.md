@@ -50,6 +50,9 @@ Light and dark themes are available. Toggle in the admin header; preference is s
 | `npm run build` | Compile TypeScript |
 | `npm start` | Run compiled `dist/index.js` |
 | `npm run seed` | Run seed script manually |
+| `npm test` | Run unit tests (Vitest) |
+| `npm run test:watch` | Unit tests in watch mode |
+| `npm run test:load` | Load test against running API (autocannon) |
 
 ### Frontend
 
@@ -94,6 +97,18 @@ Both packages use strict TypeScript. Build before committing:
 cd backend && npm run build
 cd ../frontend && npm run build
 ```
+
+## Testing
+
+See the full guide: [Testing]({{ '/testing/' | relative_url }})
+
+```bash
+cd backend
+npm test              # unit tests (27 tests, no MongoDB required)
+npm run test:load     # load test (requires running backend)
+```
+
+CI runs `npm test` on every push to `main`.
 
 ## Testing API manually
 

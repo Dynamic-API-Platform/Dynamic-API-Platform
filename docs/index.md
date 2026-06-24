@@ -97,6 +97,7 @@ The platform focuses on **rapid API deployment and management** without requirin
 | Webhooks | ✅ | Plugin | ✅ | Plugin |
 | MongoDB support | ✅ | Manual | Plugin | Plugin |
 | Docker deployment | ✅ | Manual | ✅ | ✅ |
+| MongoDB replica set / K8s | ✅ | Manual | ⚠️ | ⚠️ |
 
 Dynamic API Platform is intended for situations where APIs must be created, modified, and managed quickly — without developing and redeploying backend applications.
 
@@ -210,6 +211,9 @@ docker compose up -d
 | [Network Access]({{ '/network-access/' | relative_url }}) | Domain and IP/CIDR restrictions for dynamic APIs |
 | [Automation]({{ '/automation/' | relative_url }}) | Cron, webhooks, MCP, API keys, JS handlers, OpenAPI |
 | [Deployment]({{ '/deployment/' | relative_url }}) | Docker, production, reverse proxy |
+| [Deployment Variants]({{ '/deployment-variants/' | relative_url }}) | Docker single, Docker replica set, Kubernetes |
+| [MongoDB Replica Set]({{ '/mongodb-replica-set/' | relative_url }}) | Variant 2 — 3-node MongoDB in Docker |
+| [Kubernetes]({{ '/kubernetes/' | relative_url }}) | Variant 3 — K8s cluster deploy |
 | [Configuration]({{ '/configuration/' | relative_url }}) | Environment variables & Settings UI |
 | [Development]({{ '/development/' | relative_url }}) | Local dev setup, project conventions |
 | [Screenshots]({{ '/screenshots/' | relative_url }}) | UI gallery |
@@ -218,7 +222,7 @@ docker compose up -d
 
 ## Preview
 
-![Dashboard preview](https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/screenshots/dashboard.png)
+![Dashboard preview]({{ '/screenshots/dashboard.png' | relative_url }})
 
 [Full screenshot gallery →]({{ '/screenshots/' | relative_url }})
 

@@ -46,5 +46,8 @@ const LogSchema = new Schema<ILog>(
 );
 
 LogSchema.index({ createdAt: -1 });
+LogSchema.index({ action: 1, createdAt: -1 });
+LogSchema.index({ action: 1, source: 1, createdAt: -1 });
+LogSchema.index({ 'details.status': 1, action: 1, createdAt: -1 });
 
 export const Log = mongoose.model<ILog>('Log', LogSchema);
