@@ -22,8 +22,11 @@
     "react",
     "rbac",
     "docker",
+    "kubernetes",
     "api-platform",
-    "baas"
+    "baas",
+    "mcp",
+    "openapi"
   ],
   "scripts": {
     "dev:backend": "cd backend && npm run dev",

@@ -20,22 +20,20 @@ Ideal when you need APIs that evolve quickly: internal admin backends, MVPs, int
 
 | Update | Summary |
 |--------|---------|
-| **v1.3 — Cron** | Scheduled jobs (JavaScript, HTTP, internal endpoint) at `/cron` |
-| **v1.3 — Webhooks** | Outbound event subscriptions with optional HMAC at `/webhooks` |
-| **v1.3 — MCP** | JSON-RPC at `POST /api/mcp` + admin UI at `/mcp` (tools list, examples) |
-| **v1.3 — API keys** | Machine-to-machine auth via `X-API-Key` at `/api-keys` |
-| **v1.3 — API versioning** | Serve `/api/v1/...` alongside `/api/...` per endpoint |
-| **v1.2 — OpenAPI** | Auto-generated spec at `/api/openapi.json`, Swagger UI at `/api-docs` |
-| **v1.2 — JS handlers** | Custom `async function handler(req, db)` per endpoint |
-| **v1.2 — Export / import** | Full project backup and restore in Settings |
-| **`reference` fields** | Foreign keys between endpoints; validate links on write; `?populate=` on GET |
-| **Network access** | Restrict dynamic APIs by allowed domains and IP/CIDR pools (group + endpoint) |
-| **Database Explorer** | Raw MongoDB browser/editor at `/database` (requires `manage_users`) |
-| **API Schema** | Read-only ER diagram of endpoints, groups, and reference links at `/api-schema` |
-| **Zero-downtime routes** | Save an endpoint in the UI — callable immediately, no restart |
-| **Auth improvements** | Redirect to login when session expires; fixed JWT refresh permissions |
-| **UI themes** | Light and dark themes (slate + cyan); toggle in header or login page |
-| **License** | Apache License 2.0 |
+| **v1.4 — Deployment** | [Three variants]({{ '/deployment-variants/' | relative_url }}): Docker single, MongoDB replica set, Kubernetes |
+| **v1.4 — Testing** | Vitest (27 tests), load test, CI — [Testing]({{ '/testing/' | relative_url }}) |
+| **v1.4 — Observability** | Dashboard automation KPIs, charts, health widget; audit log `source` field |
+| **v1.3 — Cron** | Scheduled jobs at `/cron` |
+| **v1.3 — Webhooks** | Outbound events at `/webhooks` |
+| **v1.3 — MCP** | JSON-RPC at `POST /api/mcp` + admin UI at `/mcp` |
+| **v1.3 — API keys** | M2M auth via `X-API-Key` at `/api-keys` |
+| **v1.2 — OpenAPI** | Swagger UI at `/api-docs` |
+| **v1.2 — JS handlers** | Custom `handler(req, db)` per endpoint |
+| **`reference` fields** | Foreign keys; `?populate=` on GET |
+| **Network access** | Domains and IP/CIDR pools |
+| **Database Explorer** | Raw MongoDB UI at `/database` |
+| **API Schema** | ER diagram at `/api-schema` |
+| **UI themes** | Light and dark (slate + cyan) |
 
 Details: [Automation & Integrations]({{ '/automation/' | relative_url }}) · [Changelog on GitHub](https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/blob/main/CHANGELOG.md)
 
@@ -57,8 +55,9 @@ Details: [Automation & Integrations]({{ '/automation/' | relative_url }}) · [Ch
 | **OpenAPI** | Auto-generated spec, Swagger UI, embedded **API Docs** in admin panel |
 | **Security** | JWT auth with refresh, RBAC, **API keys**, **network access rules**, rate limiting, login lockout, audit logs, Helmet, CORS |
 | **Admin Panel** | Dashboard, endpoint editor, **Handler tab**, **API Schema (ER diagram)**, **API Docs**, **Cron / Webhooks / API Keys / MCP Server**, linked-endpoint picker, **Network Access** tab, **Database Explorer (raw JSON)**, API tester, users & groups, **project export/import**, scrollable sidebar |
-| **DevOps** | Docker Compose one-command deploy, health checks, persistent volumes |
+| **DevOps** | Docker Compose, **MongoDB replica set**, **Kubernetes**, health checks, CI/tests |
 | **Search** | Full-text search on all data list pages (client + server side) |
+| **Testing** | Vitest unit tests, autocannon load tests, GitHub Actions CI |
 
 ## Why Dynamic API Platform?
 
@@ -216,6 +215,7 @@ docker compose up -d
 | [Kubernetes]({{ '/kubernetes/' | relative_url }}) | Variant 3 — K8s cluster deploy |
 | [Configuration]({{ '/configuration/' | relative_url }}) | Environment variables & Settings UI |
 | [Development]({{ '/development/' | relative_url }}) | Local dev setup, project conventions |
+| [Testing]({{ '/testing/' | relative_url }}) | Unit tests, load tests, CI |
 | [Screenshots]({{ '/screenshots/' | relative_url }}) | UI gallery |
 | [FAQ]({{ '/faq/' | relative_url }}) | Common questions |
 | [Troubleshooting]({{ '/troubleshooting/' | relative_url }}) | Known issues and fixes |
@@ -230,7 +230,7 @@ docker compose up -d
 
 - **Backend:** Node.js 20, Express, TypeScript, Mongoose, MongoDB 7
 - **Frontend:** React 18, TypeScript, Vite, Tailwind CSS, Recharts
-- **Infrastructure:** Docker, Docker Compose, Nginx
+- **Infrastructure:** Docker, Docker Compose, MongoDB replica set, Kubernetes, Nginx
 
 ## License
 

@@ -100,6 +100,10 @@ Existing records are **not** automatically migrated. New validation applies on w
 
 ## Deployment
 
+### Which deployment should I use?
+
+See [Deployment Variants]({{ '/deployment-variants/' | relative_url }}): Docker single (default), Docker replica set (HA DB), or Kubernetes (scaled backend).
+
 ### Why is frontend on port 8080?
 
 Default Docker mapping `8080:80`. Change in `docker-compose.yml` if port 8080 is occupied.
@@ -110,7 +114,15 @@ Usually a misconfigured nginx `proxy_pass` that forwards `POST /api/` instead of
 
 ### Can I use external MongoDB?
 
-Yes. Set `MONGODB_URI` to your MongoDB Atlas or managed instance URL.
+Yes. Set `MONGODB_URI` to your MongoDB Atlas or managed instance URL. For HA, use a replica set connection string with `?replicaSet=`.
+
+### How do I run tests?
+
+```bash
+cd backend && npm test
+```
+
+See [Testing]({{ '/testing/' | relative_url }}).
 
 ### Does it work on ARM (Apple Silicon)?
 

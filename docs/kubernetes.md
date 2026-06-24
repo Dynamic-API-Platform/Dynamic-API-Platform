@@ -98,8 +98,8 @@ docker build -t dap/frontend:latest --build-arg VITE_API_URL="" ./frontend
 Push to your registry for remote clusters:
 
 ```bash
-docker tag dap/backend:latest registry.example.com/dap/backend:1.3.0
-docker push registry.example.com/dap/backend:1.3.0
+docker tag dap/backend:latest registry.example.com/dap/backend:1.4.0
+docker push registry.example.com/dap/backend:1.4.0
 # Update image: in k8s/backend/deployment.yaml and k8s/frontend/deployment.yaml
 ```
 

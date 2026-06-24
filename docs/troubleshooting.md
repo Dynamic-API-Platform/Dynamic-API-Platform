@@ -39,6 +39,25 @@ backend:
 
 Update `CORS_ORIGIN` accordingly.
 
+### Kubernetes pods not starting
+
+```bash
+kubectl get pods -n dap
+kubectl logs -n dap -l app.kubernetes.io/name=backend
+kubectl logs -n dap job/mongo-init
+```
+
+Common fixes: build images locally (`npm run k8s:build`), wait for MongoDB PRIMARY, check `ImagePullBackOff`. See [Kubernetes]({{ '/kubernetes/' | relative_url }}).
+
+### Docker replica set not ready
+
+```bash
+npm run docker:replica:status
+docker compose -f docker-compose.replica.yml logs mongo-init
+```
+
+See [MongoDB Replica Set]({{ '/mongodb-replica-set/' | relative_url }}).
+
 ### Frontend shows API errors / blank after login
 
 - Ensure `VITE_API_URL` build arg is `""` in Docker (uses nginx proxy)

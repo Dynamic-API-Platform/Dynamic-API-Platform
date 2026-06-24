@@ -57,9 +57,12 @@ docker compose up -d
 |------------|-------------|
 | **Dynamic engine** | GET/POST/PUT/PATCH/DELETE routes defined in the UI |
 | **`reference` fields** | Foreign keys between endpoints with `?populate=` |
+| **Automation** | Cron, webhooks, API keys, MCP server for AI agents |
 | **Network access** | Restrict callers by domain and IP/CIDR pools |
 | **Database Explorer** | Raw MongoDB admin UI for power users |
 | **RBAC** | Permission-based groups for users and management API |
+| **Deployment** | Docker, MongoDB replica set, Kubernetes — [variants](https://dynamic-api-platform.github.io/Dynamic-API-Platform/deployment-variants/) |
+| **Testing** | Vitest unit tests, load test, GitHub Actions CI |
 | **Zero downtime** | Route changes without restarting the server |
 
 ---
@@ -75,7 +78,7 @@ docker compose up -d
 
 - **Frontend:** React 18, TypeScript, Vite, Tailwind CSS  
 - **Backend:** Node.js 20, Express, Mongoose, JWT  
-- **Deploy:** Docker Compose, nginx, GitHub Actions CI  
+- **Deploy:** Docker Compose, MongoDB replica set, Kubernetes (`k8s/`), GitHub Actions CI  
 
 ---
 
@@ -85,6 +88,9 @@ docker compose up -d
 |----------|------|
 | GitHub Pages | https://dynamic-api-platform.github.io/Dynamic-API-Platform/ |
 | Getting Started | https://dynamic-api-platform.github.io/Dynamic-API-Platform/getting-started/ |
+| Deployment Variants | https://dynamic-api-platform.github.io/Dynamic-API-Platform/deployment-variants/ |
+| Automation & MCP | https://dynamic-api-platform.github.io/Dynamic-API-Platform/automation/ |
+| Testing | https://dynamic-api-platform.github.io/Dynamic-API-Platform/testing/ |
 | Dynamic API Engine | https://dynamic-api-platform.github.io/Dynamic-API-Platform/dynamic-api-engine/ |
 | Network Access | https://dynamic-api-platform.github.io/Dynamic-API-Platform/network-access/ |
 | Wiki | https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/wiki |
