@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Planned
 - Multi-tenant workspace support
 
+## [1.5.11] - 2026-06-25
+
+### Fixed
+- **In-app Docker update** — compose bind mounts now use the real host project path (`DAP_HOST_PROJECT_ROOT`) when the updater runs inside a container; fixes `mongo-init` / backend / frontend failing to start after update on macOS and similar setups
+- **Rollback** — same host-path fix when `docker compose` is invoked from the updater container
+
 ## [1.5.10] - 2026-06-25
 
 ### Security
@@ -263,6 +269,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Default endpoint groups
 - CRM, SHOP, DEVICES
 
+[1.5.11]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.5.11
 [1.5.10]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.5.10
 [1.5.9]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.5.9
 [1.5.8]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.5.8
