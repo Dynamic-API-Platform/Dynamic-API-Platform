@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Planned
 - Multi-tenant workspace support
 
+## [1.5.8] - 2026-06-25
+
+### Fixed
+- **Software Updates status** — Settings now shows the real latest GitHub version (`lastKnownLatestVersion`), not stale `lastNotifiedVersion`; auto-refreshes when installed version is newer than cache
+- **Status row** — displays **Up to date** or **Update available** clearly
+
 ## [1.5.7] - 2026-06-18
 
 ### Added
@@ -242,6 +248,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Default endpoint groups
 - CRM, SHOP, DEVICES
 
+[1.5.8]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.5.8
 [1.5.7]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.5.7
 [1.5.6]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.5.6
 [1.5.5]: https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases/tag/v1.5.5

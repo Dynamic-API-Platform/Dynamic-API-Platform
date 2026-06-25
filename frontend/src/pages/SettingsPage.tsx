@@ -366,6 +366,18 @@ export default function SettingsPage() {
                 </span>
               </div>
               <div className="flex justify-between">
+                <span className="text-dark-muted">Status</span>
+                <span className={
+                  updateStatus.updateAvailable ? 'text-amber-600 font-medium' : 'text-green-600 font-medium'
+                }>
+                  {updateStatus.updateAvailable
+                    ? 'Update available'
+                    : updateStatus.latestVersion
+                      ? 'Up to date'
+                      : 'Unknown'}
+                </span>
+              </div>
+              <div className="flex justify-between">
                 <span className="text-dark-muted">Last check</span>
                 <span className="text-xs">
                   {updateStatus.checkedAt ? new Date(updateStatus.checkedAt).toLocaleString() : 'Never'}

@@ -20,6 +20,7 @@ Ideal when you need APIs that evolve quickly: internal admin backends, MVPs, int
 
 | Update | Summary |
 |--------|---------|
+| **v1.5.8 — Update status** | Correct **Latest on GitHub** and **Up to date** in Settings — [Updates]({{ '/updates/' | relative_url }}) |
 | **v1.5.7 — Endpoint data lifecycle** | Per-endpoint **data retention** (days, or forever); **editable path** after creation — [Dynamic Engine]({{ '/dynamic-api-engine/' | relative_url }}) |
 | **v1.5.5 — Update reliability** | Stale job cleanup, **Cancel** in Settings, bash updater fix — [Updates]({{ '/updates/' | relative_url }}) |
 | **v1.5 — Software updates** | In-app updates from GitHub Releases, **Update now**, auto-update in Docker, rollback — [Updates]({{ '/updates/' | relative_url }}) |

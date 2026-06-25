@@ -1,4 +1,4 @@
-Welcome to the **Dynamic API Platform** wiki (v1.5.7).
+Welcome to the **Dynamic API Platform** wiki (v1.5.8).
 
 Create, manage, and test REST APIs without writing backend code.
 
