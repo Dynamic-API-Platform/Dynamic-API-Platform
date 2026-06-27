@@ -7,9 +7,12 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
+import { LiveModeProvider } from '../context/LiveModeContext';
 import { getThemeOption } from '../themes';
 import { userHasPermission } from '../utils/permissions';
 import UpdateBanner from './UpdateBanner';
+import { LiveModeIndicator } from './LiveModeIndicator';
+import { StaticDataRegistrar } from './StaticDataRegistrar';
 
 type NavItem = {
   to: string;
@@ -188,6 +191,8 @@ export default function Layout({ children }: { children: ReactNode }) {
       )}
 
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+        <LiveModeProvider>
+        <StaticDataRegistrar />
         <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-4 dark:border-slate-800 dark:bg-slate-900 lg:px-6">
           <button
             type="button"
@@ -197,11 +202,11 @@ export default function Layout({ children }: { children: ReactNode }) {
             <Menu className="h-5 w-5" />
           </button>
 
-          <div className="hidden text-sm font-medium text-slate-700 dark:text-slate-200 lg:block">
-            Dynamic API Platform
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            <LiveModeIndicator />
           </div>
 
-          <div className="ml-auto flex items-center gap-3">
+          <div className="flex items-center gap-3">
             <div className="hidden text-right sm:block">
               <div className="text-sm font-medium text-slate-800 dark:text-slate-100">{user?.name}</div>
               <div className="text-xs text-slate-500">{user?.login}</div>
@@ -224,6 +229,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <UpdateBanner />
           {children}
         </main>
+        </LiveModeProvider>
       </div>
     </div>
   );
