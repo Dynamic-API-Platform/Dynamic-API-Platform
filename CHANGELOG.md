@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Live UI** — header badge: auto-refresh on Dashboard/System, **статические данные** on other pages — [live-ui.md](docs/live-ui.md)
+
+### Changed
+- **Documentation** — GitHub Pages, wiki mirror, README, and org profile synced to **v1.5.11** (updates, themes, testing count, Live UI, security v1.5.10)
+
 ### Planned
 - Multi-tenant workspace support
 
