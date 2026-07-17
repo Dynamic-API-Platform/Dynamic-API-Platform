@@ -1,30 +1,7 @@
 (function () {
-  var QR_CDN = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js';
   var COPY_LABEL = 'Copy Address';
   var COPIED_LABEL = 'Copied!';
   var COPIED_MS = 1800;
-
-  function loadScript(src) {
-    return new Promise(function (resolve, reject) {
-      if (window.QRCode) {
-        resolve();
-        return;
-      }
-      var existing = document.querySelector('script[data-support-qrcode]');
-      if (existing) {
-        existing.addEventListener('load', function () { resolve(); });
-        existing.addEventListener('error', reject);
-        return;
-      }
-      var script = document.createElement('script');
-      script.src = src;
-      script.async = true;
-      script.dataset.supportQrcode = '1';
-      script.onload = function () { resolve(); };
-      script.onerror = function () { reject(new Error('Failed to load QR library')); };
-      document.head.appendChild(script);
-    });
-  }
 
   function isLightMode() {
     return document.documentElement.getAttribute('data-theme') === 'light';
@@ -39,7 +16,10 @@
 
   function renderQr(container) {
     var value = container.getAttribute('data-qr-value');
-    if (!value || !window.QRCode) return;
+    if (!value || !window.QRCode || typeof window.QRCode.toCanvas !== 'function') {
+      container.textContent = 'QR unavailable';
+      return;
+    }
 
     container.innerHTML = '';
     var canvas = document.createElement('canvas');
@@ -118,16 +98,7 @@
     if (!root) return;
 
     bindCopyButtons(root);
-
-    loadScript(QR_CDN)
-      .then(function () {
-        root.querySelectorAll('[data-qr-value]').forEach(renderQr);
-      })
-      .catch(function () {
-        root.querySelectorAll('[data-qr-value]').forEach(function (el) {
-          el.textContent = 'QR unavailable';
-        });
-      });
+    root.querySelectorAll('[data-qr-value]').forEach(renderQr);
   }
 
   if (document.readyState === 'loading') {
