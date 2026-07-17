@@ -1,0 +1,280 @@
+/* Support Project page — additive styles only */
+
+.content:has(.support-page) {
+  max-width: 980px;
+}
+
+.support-page {
+  --support-glass: rgba(18, 24, 38, 0.72);
+  --support-glass-border: rgba(148, 163, 184, 0.18);
+  --support-glow: rgba(59, 130, 246, 0.12);
+  --support-radius: 14px;
+  --support-btn-radius: 8px;
+}
+
+.support-intro {
+  margin-bottom: 2rem;
+  padding: 1.35rem 1.5rem;
+  border-radius: var(--support-radius);
+  border: 1px solid var(--support-glass-border);
+  background: var(--support-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.04), 0 12px 40px rgba(0, 0, 0, 0.22);
+}
+
+.support-message {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.support-message:last-child {
+  margin-bottom: 0;
+}
+
+.support-message-muted {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.donation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.donation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: var(--support-radius);
+  border: 1px solid var(--support-glass-border);
+  background: var(--support-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.donation-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28), 0 0 0 1px var(--support-glow);
+}
+
+.donation-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.donation-icon {
+  display: flex;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid var(--border);
+}
+
+.donation-icon svg {
+  display: block;
+}
+
+.donation-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--text);
+  border: none;
+  padding: 0;
+}
+
+.content .donation-title {
+  margin-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.donation-ticker {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.donation-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #6ee7b7;
+  background: rgba(38, 161, 123, 0.18);
+  border: 1px solid rgba(38, 161, 123, 0.35);
+}
+
+.donation-qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 168px;
+  padding: 0.85rem;
+  border-radius: 12px;
+  background: rgba(10, 14, 20, 0.85);
+  border: 1px solid var(--border);
+}
+
+.donation-qr canvas,
+.donation-qr img {
+  display: block;
+  width: 148px;
+  height: 148px;
+  border-radius: 6px;
+}
+
+.donation-address {
+  margin: 0;
+  padding: 0.7rem 0.8rem;
+  border-radius: 8px;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  word-break: break-all;
+  color: #cbd5e1;
+}
+
+.donation-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-top: auto;
+}
+
+.donation-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 40px;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--support-btn-radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.donation-btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.donation-btn-primary {
+  border: 1px solid transparent;
+  background: var(--primary);
+  color: #fff;
+}
+
+.donation-btn-primary:hover {
+  background: var(--primary-hover);
+  color: #fff;
+}
+
+.donation-btn-primary.is-copied {
+  background: #059669;
+  border-color: #059669;
+}
+
+.donation-btn-secondary {
+  border: 1px solid var(--border);
+  background: rgba(26, 34, 52, 0.9);
+  color: var(--text);
+}
+
+.donation-btn-secondary:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  color: var(--primary);
+  background: var(--bg-hover);
+}
+
+@media (max-width: 720px) {
+  .donation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donation-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Light mode — follows system preference when site tokens stay dark-friendly */
+@media (prefers-color-scheme: light) {
+  html[data-theme="light"] .support-page,
+  .support-page[data-force-light] {
+    --support-glass: rgba(255, 255, 255, 0.78);
+    --support-glass-border: rgba(15, 23, 42, 0.1);
+    --support-glow: rgba(37, 99, 235, 0.12);
+  }
+
+  html[data-theme="light"] .donation-icon,
+  .support-page[data-force-light] .donation-icon {
+    background: rgba(241, 245, 249, 0.95);
+  }
+
+  html[data-theme="light"] .donation-qr,
+  .support-page[data-force-light] .donation-qr {
+    background: #fff;
+  }
+
+  html[data-theme="light"] .donation-address,
+  .support-page[data-force-light] .donation-address {
+    color: #334155;
+    background: #f8fafc;
+  }
+
+  html[data-theme="light"] .donation-btn-secondary,
+  .support-page[data-force-light] .donation-btn-secondary {
+    background: #fff;
+    color: #0f172a;
+  }
+}
+
+html[data-theme="light"] .support-page {
+  --support-glass: rgba(255, 255, 255, 0.78);
+  --support-glass-border: rgba(15, 23, 42, 0.1);
+  --support-glow: rgba(37, 99, 235, 0.12);
+}
+
+html[data-theme="light"] .donation-icon {
+  background: rgba(241, 245, 249, 0.95);
+}
+
+html[data-theme="light"] .donation-qr {
+  background: #fff;
+}
+
+html[data-theme="light"] .donation-address {
+  color: #334155;
+  background: #f8fafc;
+}
+
+html[data-theme="light"] .donation-btn-secondary {
+  background: #fff;
+  color: #0f172a;
+}
