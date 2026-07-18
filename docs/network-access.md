@@ -4,7 +4,7 @@ redirect_from:
   - /network-access.html
 
 title: Network Access
-description: Restrict dynamic API calls by domain and IP/CIDR
+description: Restrict Dynamic API Platform endpoints by client domain and IP/CIDR — separate from JWT and RBAC access types.
 ---
 
 **Network access** rules let you restrict who can call a dynamic endpoint based on **client domain** (browser `Origin` / `Referer` / `Host`) and **client IP address** (including CIDR pools). This is separate from JWT/RBAC **access types** (`public`, `authenticated`, `group`).

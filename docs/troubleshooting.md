@@ -4,6 +4,7 @@ redirect_from:
   - /troubleshooting.html
 
 title: Troubleshooting
+description: Fix common Dynamic API Platform issues — Docker, MongoDB, authentication, networking, updates, and Kubernetes.
 ---
 
 ## Docker

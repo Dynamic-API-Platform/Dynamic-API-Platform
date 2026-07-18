@@ -4,6 +4,7 @@ redirect_from:
   - /themes.html
 
 title: UI Themes
+description: Admin UI themes for Dynamic API Platform — Dark, Light, Ocean, and Forest with instant switching and per-user preference.
 ---
 
 The admin panel supports **four color themes**. Your choice is saved in the browser (`localStorage`) and applies instantly — no reload required.

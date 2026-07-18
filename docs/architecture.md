@@ -4,6 +4,7 @@ redirect_from:
   - /architecture.html
 
 title: Architecture
+description: Architecture of Dynamic API Platform — React frontend, Express backend, MongoDB, and the runtime dynamic API engine.
 ---
 
 ## High-level overview

@@ -4,6 +4,7 @@ redirect_from:
   - /faq.html
 
 title: FAQ
+description: Frequently asked questions about Dynamic API Platform — features, production readiness, authentication, deployment, and troubleshooting.
 ---
 
 ## General

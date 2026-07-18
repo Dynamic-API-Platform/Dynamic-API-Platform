@@ -4,6 +4,7 @@ redirect_from:
   - /updates.html
 
 title: Software Updates
+description: In-app software updates for Dynamic API Platform — GitHub release checks, optional auto-update, progress tracking, and rollback.
 ---
 
 The platform can check [GitHub Releases](https://github.com/Dynamic-API-Platform/Dynamic-API-Platform/releases) for new versions, notify administrators in the UI, and optionally apply updates automatically with health verification and rollback on failure.

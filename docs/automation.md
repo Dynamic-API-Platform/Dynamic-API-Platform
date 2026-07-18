@@ -2,7 +2,7 @@
 layout: default
 
 title: Automation & Integrations
-description: Cron, webhooks, MCP, API keys, JavaScript handlers, and OpenAPI
+description: Automate Dynamic API Platform with cron jobs, webhooks, MCP for AI agents, API keys, JavaScript handlers, and OpenAPI docs.
 ---
 
 Dynamic API Platform v1.2+ includes tools that go beyond CRUD: scheduled jobs, outbound webhooks, OpenAPI docs, JavaScript handlers, MCP for AI agents, and API keys.

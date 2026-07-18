@@ -4,7 +4,7 @@ redirect_from:
   - /screenshots.html
 
 title: Screenshots
-description: UI screenshots from localhost deployment
+description: Screenshots of the Dynamic API Platform admin panel — dashboard, endpoints, schemas, automation, and settings.
 ---
 
 Screenshots of **Dynamic API Platform v1.5.13** running at `http://localhost:8080` (captured June 2026).

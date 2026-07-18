@@ -4,6 +4,7 @@ redirect_from:
   - /deployment.html
 
 title: Deployment
+description: Deploy Dynamic API Platform with Docker Compose, MongoDB replica set, or Kubernetes — production checklist and step-by-step guides.
 ---
 
 Choose a deployment variant based on your needs. The platform ships **three options**:

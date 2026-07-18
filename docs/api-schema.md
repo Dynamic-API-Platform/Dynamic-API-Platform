@@ -4,7 +4,7 @@ redirect_from:
   - /api-schema.html
 
 title: API Schema
-description: Read-only ER diagram of endpoints, groups, fields, and reference links
+description: Visual API schema map for Dynamic API Platform — endpoints, groups, fields, and reference links as a read-only ER-style diagram.
 ---
 
 The **API Schema** page (`/api-schema`) is a read-only visual map of your dynamic API — similar to an ER diagram in MySQL Workbench. It helps you see how endpoint groups, resources, fields, and `reference` (foreign key) links fit together.

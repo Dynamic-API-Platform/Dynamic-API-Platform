@@ -4,7 +4,7 @@ redirect_from:
   - /mongodb-replica-set.html
 
 title: MongoDB Replica Set
-description: Horizontal MongoDB scaling with a 3-node replica set in Docker Compose
+description: Run Dynamic API Platform with a 3-node MongoDB replica set in Docker Compose for high availability and failover.
 ---
 
 Dynamic API Platform supports a **3-node MongoDB replica set** for high availability and horizontal database scaling. This is **deployment Variant 2** — see [Deployment Variants]({{ '/deployment-variants/' | relative_url }}) for all options.

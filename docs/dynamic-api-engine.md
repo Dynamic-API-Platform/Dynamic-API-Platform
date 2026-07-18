@@ -4,6 +4,7 @@ redirect_from:
   - /dynamic-api-engine.html
 
 title: Dynamic API Engine
+description: How the runtime engine serves MongoDB-defined REST endpoints without restarts — paths, schemas, access control, and data retention.
 ---
 
 The dynamic engine is the core feature of the platform — it serves REST APIs defined in MongoDB at runtime without server restarts or code deployments.

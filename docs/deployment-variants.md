@@ -4,7 +4,7 @@ redirect_from:
   - /deployment-variants.html
 
 title: Deployment Variants
-description: Three ways to run Dynamic API Platform — Docker single-node, Docker replica set, Kubernetes
+description: Compare three Dynamic API Platform deployments — Docker single-node, Docker MongoDB replica set, and Kubernetes.
 ---
 
 Dynamic API Platform supports **three deployment variants**. Pick based on your environment: local dev, HA on a single host, or a production Kubernetes cluster.

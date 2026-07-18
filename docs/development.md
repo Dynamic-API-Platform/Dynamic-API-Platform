@@ -4,6 +4,7 @@ redirect_from:
   - /development.html
 
 title: Development
+description: Local development setup for Dynamic API Platform — Node.js, MongoDB, backend, frontend, and useful npm scripts.
 ---
 
 ## Prerequisites

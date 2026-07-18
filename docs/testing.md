@@ -4,7 +4,7 @@ redirect_from:
   - /testing.html
 
 title: Testing
-description: Unit tests, CI, load testing, and manual API verification
+description: Test Dynamic API Platform with Vitest unit tests, CI workflows, load testing, and manual API verification.
 ---
 
 Dynamic API Platform includes **automated unit tests** (Vitest), **CI integration**, and a **load test** script for performance smoke checks.

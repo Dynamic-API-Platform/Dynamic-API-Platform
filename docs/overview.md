@@ -5,7 +5,7 @@ redirect_from:
   - /why.html
 
 title: Why Dynamic API Platform
-description: Key advantages, comparison with alternatives, and example use cases
+description: Why choose Dynamic API Platform — key advantages, comparison with Strapi and Directus, and real-world use cases.
 ---
 
 Most API solutions require developers to write backend code, modify source files, redeploy applications, or restart services when API structures change.

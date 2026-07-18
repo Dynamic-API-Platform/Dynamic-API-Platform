@@ -4,6 +4,7 @@ redirect_from:
   - /getting-started.html
 
 title: Getting Started
+description: Install and run Dynamic API Platform with Docker Compose, a MongoDB replica set, or Kubernetes in minutes.
 ---
 
 ## Prerequisites

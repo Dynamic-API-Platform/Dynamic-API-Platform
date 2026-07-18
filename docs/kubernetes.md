@@ -4,7 +4,7 @@ redirect_from:
   - /kubernetes.html
 
 title: Kubernetes
-description: Deploy Dynamic API Platform on Kubernetes with MongoDB replica set and backend integration
+description: Deploy Dynamic API Platform on Kubernetes with a MongoDB replica set, scaled backend, and frontend UI.
 ---
 
 Run Dynamic API Platform on Kubernetes with a **3-node MongoDB replica set**, horizontally scaled **backend**, and **frontend** UI. This is **deployment Variant 3** — see [Deployment Variants]({{ '/deployment-variants/' | relative_url }}) for comparison with Docker options.

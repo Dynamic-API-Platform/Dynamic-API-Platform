@@ -4,6 +4,7 @@ redirect_from:
   - /live-ui.html
 
 title: Live UI Indicator
+description: Live UI indicator in the Dynamic API Platform admin header — auto-refresh on Dashboard and System, static data elsewhere.
 ---
 
 The admin header shows a **Live** badge on every authenticated page (since **v1.5.12**). It tells you whether the current page auto-refreshes or loads data once.

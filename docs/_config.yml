@@ -1,7 +1,10 @@
 title: Dynamic API Platform
-description: Create, manage and test dynamic REST APIs without writing code
+tagline: Dynamic REST APIs without writing code
+description: Open-source platform to create, manage, and test dynamic REST APIs without writing backend code. Define endpoints in a web UI, enforce RBAC, and deploy with Docker or Kubernetes.
 url: https://dynamic-api-platform.github.io
 baseurl: /Dynamic-API-Platform
+lang: en
+logo: /assets/org-logo.png
 
 markdown: GFM
 permalink: pretty
@@ -14,6 +17,12 @@ plugins:
 relative_links:
   enabled: true
   collections: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /banner.png
 
 exclude:
   - Gemfile

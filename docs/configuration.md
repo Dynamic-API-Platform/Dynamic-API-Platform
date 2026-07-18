@@ -4,6 +4,7 @@ redirect_from:
   - /configuration.html
 
 title: Configuration
+description: Environment variables and settings for Dynamic API Platform — JWT, MongoDB, CORS, rate limits, CSRF, and admin seed credentials.
 ---
 
 ## Environment variables

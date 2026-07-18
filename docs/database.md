@@ -4,7 +4,7 @@ redirect_from:
   - /database.html
 
 title: Database Explorer
-description: Raw MongoDB browser and editor in the admin panel
+description: Browse and edit MongoDB collections as raw JSON in the Dynamic API Platform admin panel — useful for debugging and data fixes.
 ---
 
 The **Database** section (`/database`) lets administrators browse and edit platform MongoDB collections as **raw JSON** — useful for debugging, data fixes, and inspecting `endpointdatas` without external tools.

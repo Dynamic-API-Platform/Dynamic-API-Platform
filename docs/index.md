@@ -1,5 +1,6 @@
 ---
 layout: default
+description: Open-source platform to create, manage, and test dynamic REST APIs without writing backend code — MongoDB runtime engine, RBAC, Docker, and Kubernetes.
 ---
 
 <img class="banner" src="https://raw.githubusercontent.com/Dynamic-API-Platform/Dynamic-API-Platform/main/docs/banner.png" alt="Dynamic API Platform">

@@ -4,7 +4,7 @@ redirect_from:
   - /rbac.html
 
 title: Role-Based Access Control
-description: Permissions, groups, and access types
+description: Role-based access control in Dynamic API Platform — permissions, groups, and public, authenticated, or group access types.
 ---
 
 ## Overview

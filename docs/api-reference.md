@@ -4,6 +4,7 @@ redirect_from:
   - /api-reference.html
 
 title: API Reference
+description: HTTP API reference for Dynamic API Platform — authentication, users, groups, endpoints, schemas, logs, and system settings.
 ---
 
 Base URL: `http://localhost:3001` (or your deployment domain)
