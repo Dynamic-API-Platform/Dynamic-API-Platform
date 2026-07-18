@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dynamic-api-platform.github.io/Dynamic-API-Platform/sitemap.xml
